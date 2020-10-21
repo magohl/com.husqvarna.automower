@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  </head>
+  <body>
+    <h1 data-i18n="settings.title">
+    </h1>
+    <p data-i18n="settings.subtitle">
+    </p>
+
+    <fieldset>
+      <legend>Automower Settings</legend>
+
+      <div class="field row">
+        <label for="username">Username</label>
+        <input id="username" type="text" value="" />
+      </div>
+      <div class="field row">
+        <label for="password">Password</label>
+        <input id="password" type="password" value="" />
+      </div>
+      <div class="field row">
+        <label for="appkey">Appkey (Client ID)</label>
+        <input id="appkey" type="text" value="" />
+      </div>
+    </fieldset>
+
+    <button id="save" class="right">Save changes</button>
+
+    <script type="text/javascript">
+      function onHomeyReady(Homey) {
+        Homey.ready();
+
+        var usernameElement = document.getElementById('username');
+        var passwordElement = document.getElementById('password');
+        var appkeyElement = document.getElementById('appkey');
+        var saveElement = document.getElementById('save');
+
+        Homey.get('username', function (err, username) {
+          if (err) return Homey.alert(err);
+          usernameElement.value = username;
+        });
+
+        Homey.get('password', function (err, password) {
+          if (err) return Homey.alert(err);
+          passwordElement.value = password;
+        });
+
+        Homey.get('appkey', function (err, appkey) {
+          if (err) return Homey.alert(err);
+          appkeyElement.value = appkey;
+        });
+
+        saveElement.addEventListener('click', function (e) {
+          Homey.set('username', usernameElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+          Homey.set('password', passwordElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+          Homey.set('appkey', appkeyElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
