@@ -12,10 +12,11 @@
   "category": [
     "appliances"
   ],
+  "brandColor": "#273A60",
   "permissions": [],
   "images": {
-    "large": "/assets/images/smart-mower.svg",
-    "small": "/assets/images/smart-mower.svg"
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
   },
   "author": {
     "name": "Magnus Ohlsson",
@@ -711,8 +712,8 @@
         "mower_battery_capability"
       ],
       "images": {
-        "large": "/drivers/mower/assets/images/smart-mower.svg",
-        "small": "/drivers/mower/assets/images/smart-mower.svg"
+        "large": "/drivers/mower/assets/images/large.png",
+        "small": "/drivers/mower/assets/images/small.png"
       },
       "pair": [
         {
