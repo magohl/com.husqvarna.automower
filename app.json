@@ -21,6 +21,7 @@
     "name": "Magnus Ohlsson",
     "email": "magnus.ohlsson@gmail.com"
   },
+  "source": "https://github.com/magohl/com.husqvarna.automower",
   "capabilities": {
     "mower_activity_capability": {
       "type": "enum",

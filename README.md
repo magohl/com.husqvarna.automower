@@ -1,6 +1,6 @@
 # Husqvarna Automower
 
-Athom Homey smart-home app to control the Husqvarna Automower.
+Athom Homey smart-home app to control the Husqvarna Automower
 
 ### Changelog
 * 1.0 first version
