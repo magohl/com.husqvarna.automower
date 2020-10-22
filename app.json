@@ -31,7 +31,7 @@
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
-      "icon": "/assets/images/activity.svg",
+      "icon": "/drivers/mower/assets/activity.svg",
       "values": [
         {
           "id": "UNKNOWN",
@@ -91,7 +91,7 @@
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
-      "icon": "/assets/images/area.svg",
+      "icon": "/drivers/mower/assets/area.svg",
       "values": [
         {
           "id": "MAIN_AREA",
@@ -133,7 +133,7 @@
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
-      "icon": "/assets/images/grass.svg",
+      "icon": "/drivers/mower/assets/grass.svg",
       "values": [
         {
           "id": "UNKNOWN",
@@ -217,7 +217,7 @@
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
-      "icon": "/assets/images/error.svg",
+      "icon": "/drivers/mower/assets/error.svg",
       "values": [
         {"id": "0", "title": {"en": "---"}},
         {"id": "1", "title": {"en": "Outside working area"}},
@@ -320,7 +320,7 @@
       "units": "%",
       "getable": true,
       "setable": false,
-      "icon": "/assets/images/battery.svg"
+      "icon": "/drivers/mower/assets/battery.svg"
     }
   },
   "flow": {
