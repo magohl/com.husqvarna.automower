@@ -1,13 +1,13 @@
 {
   "id": "com.husqvarna.automower",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
     "en": "Husqvarna Automower Connect"
   },
   "description": {
-    "en": "Control Husqvarna Automower Connect mowers"
+    "en": "One step closer to a smarter garden"
   },
   "category": [
     "appliances"
@@ -220,97 +220,552 @@
       "uiComponent": "sensor",
       "icon": "/drivers/mower/assets/error.svg",
       "values": [
-        {"id": "0", "title": {"en": "---"}},
-        {"id": "1", "title": {"en": "Outside working area"}},
-        {"id": "2", "title": {"en": "No loop signal"}},
-        {"id": "3", "title": {"en": "Wrong loop signal"}},
-        {"id": "4", "title": {"en": "Loop sensor problem, front"}},
-        {"id": "5", "title": {"en": "Loop sensor problem, rear"}},
-        {"id": "6", "title": {"en": "Loop sensor problem, left"}},
-        {"id": "7", "title": {"en": "Loop sensor problem, right"}},
-        {"id": "8", "title": {"en": "Wrong PIN code"}},
-        {"id": "9", "title": {"en": "Trapped"}},
-        {"id": "10", "title": {"en": "Upside down"}},
-        {"id": "11", "title": {"en": "Low battery"}},
-        {"id": "12", "title": {"en": "Empty battery"}},
-        {"id": "13", "title": {"en": "No drive"}},
-        {"id": "14", "title": {"en": "Mower lifted"}},
-        {"id": "15", "title": {"en": "Lifted"}},
-        {"id": "16", "title": {"en": "Stuck in charging station"}},
-        {"id": "17", "title": {"en": "Charging station blocked"}},
-        {"id": "18", "title": {"en": "Collision sensor problem, rear"}},
-        {"id": "19", "title": {"en": "Collision sensor problem, front"}},
-        {"id": "20", "title": {"en": "Wheel motor blocked, right"}},
-        {"id": "21", "title": {"en": "Wheel motor blocked, left"}},
-        {"id": "22", "title": {"en": "Wheel drive problem, right"}},
-        {"id": "23", "title": {"en": "Wheel drive problem, left"}},
-        {"id": "24", "title": {"en": "Cutting system blocked"}},
-        {"id": "25", "title": {"en": "Cutting system blocked"}},
-        {"id": "26", "title": {"en": "Invalid sub-device combination"}},
-        {"id": "27", "title": {"en": "Settings restored"}},
-        {"id": "28", "title": {"en": "Memory circuit problem"}},
-        {"id": "29", "title": {"en": "Slope too steep"}},
-        {"id": "30", "title": {"en": "Charging system problem"}},
-        {"id": "31", "title": {"en": "STOP button problem"}},
-        {"id": "32", "title": {"en": "Tilt sensor problem"}},
-        {"id": "33", "title": {"en": "Mower tilted"}},
-        {"id": "34", "title": {"en": "Cutting stopped - slope too steep"}},
-        {"id": "35", "title": {"en": "Wheel motor overloaded, right"}},
-        {"id": "36", "title": {"en": "Wheel motor overloaded, left"}},
-        {"id": "37", "title": {"en": "Charging current too high"}},
-        {"id": "38", "title": {"en": "Electronic problem"}},
-        {"id": "39", "title": {"en": "Cutting motor problem"}},
-        {"id": "40", "title": {"en": "Limited cutting height range"}},
-        {"id": "41", "title": {"en": "Unexpected cutting height adj"}},
-        {"id": "42", "title": {"en": "Limited cutting height range"}},
-        {"id": "43", "title": {"en": "Cutting height problem, drive"}},
-        {"id": "44", "title": {"en": "Cutting height problem, curr"}},
-        {"id": "45", "title": {"en": "Cutting height problem, dir"}},
-        {"id": "46", "title": {"en": "Cutting height blocked"}},
-        {"id": "47", "title": {"en": "Cutting height problem"}},
-        {"id": "48", "title": {"en": "No response from charger"}},
-        {"id": "49", "title": {"en": "Ultrasonic problem"}},
-        {"id": "50", "title": {"en": "Guide 1 not found"}},
-        {"id": "51", "title": {"en": "Guide 2 not found"}},
-        {"id": "52", "title": {"en": "Guide 3 not found"}},
-        {"id": "53", "title": {"en": "GPS navigation problem"}},
-        {"id": "54", "title": {"en": "Weak GPS signal"}},
-        {"id": "55", "title": {"en": "Difficult finding home"}},
-        {"id": "56", "title": {"en": "Guide calibration accomplished"}},
-        {"id": "57", "title": {"en": "Guide calibration failed"}},
-        {"id": "58", "title": {"en": "Temporary battery problem"}},
-        {"id": "59", "title": {"en": "Temporary battery problem"}},
-        {"id": "60", "title": {"en": "Temporary battery problem"}},
-        {"id": "61", "title": {"en": "Temporary battery problem"}},
-        {"id": "62", "title": {"en": "Temporary battery problem"}},
-        {"id": "63", "title": {"en": "Temporary battery problem"}},
-        {"id": "64", "title": {"en": "Temporary battery problem"}},
-        {"id": "65", "title": {"en": "Temporary battery problem"}},
-        {"id": "66", "title": {"en": "Battery problem"}},
-        {"id": "67", "title": {"en": "Battery problem"}},
-        {"id": "68", "title": {"en": "Temporary battery problem"}},
-        {"id": "69", "title": {"en": "Alarm! Mower switched off"}},
-        {"id": "70", "title": {"en": "Alarm! Mower stopped"}},
-        {"id": "71", "title": {"en": "Alarm! Mower lifted"}},
-        {"id": "72", "title": {"en": "Alarm! Mower tilted"}},
-        {"id": "73", "title": {"en": "Alarm! Mower in motion"}},
-        {"id": "74", "title": {"en": "Alarm! Outside geofence"}},
-        {"id": "75", "title": {"en": "Connection changed"}},
-        {"id": "76", "title": {"en": "Connection NOT changed"}},
-        {"id": "77", "title": {"en": "Com board not available"}},
-        {"id": "78", "title": {"en": "Slipped - Mower has Slipped.Situation not solved with moving pattern"}},
-        {"id": "79", "title": {"en": "Invalid battery combination - Invalid combination of different battery types."}},
-        {"id": "80", "title": {"en": "Cutting system imbalance    Warning"}},
-        {"id": "81", "title": {"en": "Safety function faulty"}},
-        {"id": "82", "title": {"en": "Wheel motor blocked, rear right"}},
-        {"id": "83", "title": {"en": "Wheel motor blocked, rear left"}},
-        {"id": "84", "title": {"en": "Wheel drive problem, rear right"}},
-        {"id": "85", "title": {"en": "Wheel drive problem, rear left"}},
-        {"id": "86", "title": {"en": "Wheel motor overloaded, rear right"}},
-        {"id": "87", "title": {"en": "Wheel motor overloaded, rear left"}},
-        {"id": "88", "title": {"en": "Angular sensor problem"}},
-        {"id": "89", "title": {"en": "Invalid system configuration"}},
-        {"id": "90", "title": {"en": "No power in charging station"}}
+        {
+          "id": "0",
+          "title": {
+            "en": "---"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Outside working area"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "No loop signal"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "Wrong loop signal"
+          }
+        },
+        {
+          "id": "4",
+          "title": {
+            "en": "Loop sensor problem, front"
+          }
+        },
+        {
+          "id": "5",
+          "title": {
+            "en": "Loop sensor problem, rear"
+          }
+        },
+        {
+          "id": "6",
+          "title": {
+            "en": "Loop sensor problem, left"
+          }
+        },
+        {
+          "id": "7",
+          "title": {
+            "en": "Loop sensor problem, right"
+          }
+        },
+        {
+          "id": "8",
+          "title": {
+            "en": "Wrong PIN code"
+          }
+        },
+        {
+          "id": "9",
+          "title": {
+            "en": "Trapped"
+          }
+        },
+        {
+          "id": "10",
+          "title": {
+            "en": "Upside down"
+          }
+        },
+        {
+          "id": "11",
+          "title": {
+            "en": "Low battery"
+          }
+        },
+        {
+          "id": "12",
+          "title": {
+            "en": "Empty battery"
+          }
+        },
+        {
+          "id": "13",
+          "title": {
+            "en": "No drive"
+          }
+        },
+        {
+          "id": "14",
+          "title": {
+            "en": "Mower lifted"
+          }
+        },
+        {
+          "id": "15",
+          "title": {
+            "en": "Lifted"
+          }
+        },
+        {
+          "id": "16",
+          "title": {
+            "en": "Stuck in charging station"
+          }
+        },
+        {
+          "id": "17",
+          "title": {
+            "en": "Charging station blocked"
+          }
+        },
+        {
+          "id": "18",
+          "title": {
+            "en": "Collision sensor problem, rear"
+          }
+        },
+        {
+          "id": "19",
+          "title": {
+            "en": "Collision sensor problem, front"
+          }
+        },
+        {
+          "id": "20",
+          "title": {
+            "en": "Wheel motor blocked, right"
+          }
+        },
+        {
+          "id": "21",
+          "title": {
+            "en": "Wheel motor blocked, left"
+          }
+        },
+        {
+          "id": "22",
+          "title": {
+            "en": "Wheel drive problem, right"
+          }
+        },
+        {
+          "id": "23",
+          "title": {
+            "en": "Wheel drive problem, left"
+          }
+        },
+        {
+          "id": "24",
+          "title": {
+            "en": "Cutting system blocked"
+          }
+        },
+        {
+          "id": "25",
+          "title": {
+            "en": "Cutting system blocked"
+          }
+        },
+        {
+          "id": "26",
+          "title": {
+            "en": "Invalid sub-device combination"
+          }
+        },
+        {
+          "id": "27",
+          "title": {
+            "en": "Settings restored"
+          }
+        },
+        {
+          "id": "28",
+          "title": {
+            "en": "Memory circuit problem"
+          }
+        },
+        {
+          "id": "29",
+          "title": {
+            "en": "Slope too steep"
+          }
+        },
+        {
+          "id": "30",
+          "title": {
+            "en": "Charging system problem"
+          }
+        },
+        {
+          "id": "31",
+          "title": {
+            "en": "STOP button problem"
+          }
+        },
+        {
+          "id": "32",
+          "title": {
+            "en": "Tilt sensor problem"
+          }
+        },
+        {
+          "id": "33",
+          "title": {
+            "en": "Mower tilted"
+          }
+        },
+        {
+          "id": "34",
+          "title": {
+            "en": "Cutting stopped - slope too steep"
+          }
+        },
+        {
+          "id": "35",
+          "title": {
+            "en": "Wheel motor overloaded, right"
+          }
+        },
+        {
+          "id": "36",
+          "title": {
+            "en": "Wheel motor overloaded, left"
+          }
+        },
+        {
+          "id": "37",
+          "title": {
+            "en": "Charging current too high"
+          }
+        },
+        {
+          "id": "38",
+          "title": {
+            "en": "Electronic problem"
+          }
+        },
+        {
+          "id": "39",
+          "title": {
+            "en": "Cutting motor problem"
+          }
+        },
+        {
+          "id": "40",
+          "title": {
+            "en": "Limited cutting height range"
+          }
+        },
+        {
+          "id": "41",
+          "title": {
+            "en": "Unexpected cutting height adj"
+          }
+        },
+        {
+          "id": "42",
+          "title": {
+            "en": "Limited cutting height range"
+          }
+        },
+        {
+          "id": "43",
+          "title": {
+            "en": "Cutting height problem, drive"
+          }
+        },
+        {
+          "id": "44",
+          "title": {
+            "en": "Cutting height problem, curr"
+          }
+        },
+        {
+          "id": "45",
+          "title": {
+            "en": "Cutting height problem, dir"
+          }
+        },
+        {
+          "id": "46",
+          "title": {
+            "en": "Cutting height blocked"
+          }
+        },
+        {
+          "id": "47",
+          "title": {
+            "en": "Cutting height problem"
+          }
+        },
+        {
+          "id": "48",
+          "title": {
+            "en": "No response from charger"
+          }
+        },
+        {
+          "id": "49",
+          "title": {
+            "en": "Ultrasonic problem"
+          }
+        },
+        {
+          "id": "50",
+          "title": {
+            "en": "Guide 1 not found"
+          }
+        },
+        {
+          "id": "51",
+          "title": {
+            "en": "Guide 2 not found"
+          }
+        },
+        {
+          "id": "52",
+          "title": {
+            "en": "Guide 3 not found"
+          }
+        },
+        {
+          "id": "53",
+          "title": {
+            "en": "GPS navigation problem"
+          }
+        },
+        {
+          "id": "54",
+          "title": {
+            "en": "Weak GPS signal"
+          }
+        },
+        {
+          "id": "55",
+          "title": {
+            "en": "Difficult finding home"
+          }
+        },
+        {
+          "id": "56",
+          "title": {
+            "en": "Guide calibration accomplished"
+          }
+        },
+        {
+          "id": "57",
+          "title": {
+            "en": "Guide calibration failed"
+          }
+        },
+        {
+          "id": "58",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "59",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "60",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "61",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "62",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "63",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "64",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "65",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "66",
+          "title": {
+            "en": "Battery problem"
+          }
+        },
+        {
+          "id": "67",
+          "title": {
+            "en": "Battery problem"
+          }
+        },
+        {
+          "id": "68",
+          "title": {
+            "en": "Temporary battery problem"
+          }
+        },
+        {
+          "id": "69",
+          "title": {
+            "en": "Alarm! Mower switched off"
+          }
+        },
+        {
+          "id": "70",
+          "title": {
+            "en": "Alarm! Mower stopped"
+          }
+        },
+        {
+          "id": "71",
+          "title": {
+            "en": "Alarm! Mower lifted"
+          }
+        },
+        {
+          "id": "72",
+          "title": {
+            "en": "Alarm! Mower tilted"
+          }
+        },
+        {
+          "id": "73",
+          "title": {
+            "en": "Alarm! Mower in motion"
+          }
+        },
+        {
+          "id": "74",
+          "title": {
+            "en": "Alarm! Outside geofence"
+          }
+        },
+        {
+          "id": "75",
+          "title": {
+            "en": "Connection changed"
+          }
+        },
+        {
+          "id": "76",
+          "title": {
+            "en": "Connection NOT changed"
+          }
+        },
+        {
+          "id": "77",
+          "title": {
+            "en": "Com board not available"
+          }
+        },
+        {
+          "id": "78",
+          "title": {
+            "en": "Slipped - Mower has Slipped.Situation not solved with moving pattern"
+          }
+        },
+        {
+          "id": "79",
+          "title": {
+            "en": "Invalid battery combination - Invalid combination of different battery types."
+          }
+        },
+        {
+          "id": "80",
+          "title": {
+            "en": "Cutting system imbalance    Warning"
+          }
+        },
+        {
+          "id": "81",
+          "title": {
+            "en": "Safety function faulty"
+          }
+        },
+        {
+          "id": "82",
+          "title": {
+            "en": "Wheel motor blocked, rear right"
+          }
+        },
+        {
+          "id": "83",
+          "title": {
+            "en": "Wheel motor blocked, rear left"
+          }
+        },
+        {
+          "id": "84",
+          "title": {
+            "en": "Wheel drive problem, rear right"
+          }
+        },
+        {
+          "id": "85",
+          "title": {
+            "en": "Wheel drive problem, rear left"
+          }
+        },
+        {
+          "id": "86",
+          "title": {
+            "en": "Wheel motor overloaded, rear right"
+          }
+        },
+        {
+          "id": "87",
+          "title": {
+            "en": "Wheel motor overloaded, rear left"
+          }
+        },
+        {
+          "id": "88",
+          "title": {
+            "en": "Angular sensor problem"
+          }
+        },
+        {
+          "id": "89",
+          "title": {
+            "en": "Invalid system configuration"
+          }
+        },
+        {
+          "id": "90",
+          "title": {
+            "en": "No power in charging station"
+          }
+        }
       ]
     },
     "mower_battery_capability": {
@@ -329,7 +784,7 @@
       {
         "id": "mower_activity_capability_changed",
         "title": {
-          "en": "Automower activity changed"
+          "en": "Activity changed"
         },
         "tokens": [
           {
@@ -352,7 +807,7 @@
       {
         "id": "mower_mode_capability_changed",
         "title": {
-          "en": "Automower mode changed"
+          "en": "Mode changed"
         },
         "tokens": [
           {
@@ -375,7 +830,7 @@
       {
         "id": "mower_state_capability_changed",
         "title": {
-          "en": "Automower state changed"
+          "en": "State changed"
         },
         "tokens": [
           {
@@ -398,7 +853,7 @@
       {
         "id": "mower_battery_capability_changed",
         "title": {
-          "en": "Automower battery level changed"
+          "en": "Battery level changed"
         },
         "tokens": [
           {
@@ -421,7 +876,7 @@
       {
         "id": "mower_errorcode_capability_changed",
         "title": {
-          "en": "Automower errorcode changed"
+          "en": "Errorcode changed"
         },
         "tokens": [
           {
@@ -446,7 +901,7 @@
       {
         "id": "activity_is",
         "title": {
-          "en": "Automower activity is"
+          "en": "Activity is"
         },
         "args": [
           {
@@ -507,13 +962,13 @@
                 }
               }
             ]
-          }          
+          }
         ]
       },
       {
         "id": "state_is",
         "title": {
-          "en": "Automower state is"
+          "en": "State is"
         },
         "args": [
           {
@@ -598,7 +1053,7 @@
                 }
               }
             ]
-          }          
+          }
         ]
       }
     ],
@@ -619,7 +1074,7 @@
       {
         "id": "park_until_next_schedule",
         "title": {
-          "en": "Park until next scheduled run"
+          "en": "Park until scheduled start"
         },
         "args": [
           {
@@ -632,6 +1087,9 @@
       {
         "id": "park_until_further_notice",
         "title": {
+          "en": "Park"
+        },
+        "hint": {
           "en": "Park until further notice"
         },
         "args": [
@@ -645,7 +1103,7 @@
       {
         "id": "park_duration",
         "title": {
-          "en": "Park for a duration of time, overriding schedule"
+          "en": "Park for duration of time"
         },
         "args": [
           {
@@ -665,7 +1123,10 @@
       {
         "id": "resume_schedule",
         "title": {
-          "en": "Resume schedule"
+          "en": "Resume"
+        },
+        "hint": {
+          "en": "Resume normal schedule"
         },
         "args": [
           {
@@ -678,7 +1139,10 @@
       {
         "id": "start_duration",
         "title": {
-          "en": "Start mower and cut for a duration of time, overriding schedule"
+          "en": "Start and run for duration of time"
+        },
+        "hint": {
+          "en": "Start mower and run for duration of time, overriding normal schedule"
         },
         "args": [
           {
