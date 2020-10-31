@@ -11,7 +11,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * State
 * Mode
 * Errorcode
-* Batery level
+* Battery level
 
 ### Triggers
 * Activity changed
@@ -51,3 +51,8 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 
 ### Rate limitations
 Note that the Husqvarna API currently has an rate limitation of 10,000 calls per month and account. By default this homey app poll the Husqvarna Automower Connect API every 10 minutes. You can change this in app settings. Note - if your main usage is flow actions to control the mower, you do not need polling and it can be disabled.
+
+### Screenshots
+
+![Screenshot_20201031-121838_Homey](https://user-images.githubusercontent.com/1846780/97784792-48ccd480-1ba1-11eb-927f-3e964a6fbb24.jpg)
+Example of the capabilities/details screen when mower power is off
