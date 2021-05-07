@@ -777,6 +777,15 @@
       "getable": true,
       "setable": false,
       "icon": "/drivers/mower/assets/battery.svg"
+    },
+    "mower_nextstart_capability": {
+      "type" : "string",
+      "title": {
+        "en": "Next start"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/drivers/mower/assets/clock.svg"
     }
   },
   "flow": {
@@ -886,6 +895,29 @@
               "en": "Error code"
             },
             "example": 0
+          }
+        ],
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          }
+        ]
+      },
+      {
+        "id": "mower_nextstart_capability_changed",
+        "title": {
+          "en": "Next start changed"
+        },
+        "tokens": [
+          {
+            "name": "value",
+            "type": "string",
+            "title": {
+              "en": "Next start"
+            },
+            "example": "Thursday 14:00"
           }
         ],
         "args": [
@@ -1173,7 +1205,8 @@
         "mower_mode_capability",
         "mower_state_capability",
         "mower_errorcode_capability",
-        "mower_battery_capability"
+        "mower_battery_capability",
+        "mower_nextstart_capability"
       ],
       "images": {
         "large": "/drivers/mower/assets/images/large.png",

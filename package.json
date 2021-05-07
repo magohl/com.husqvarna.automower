@@ -6,6 +6,7 @@
     "homey": "^2.8.0"
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "node-fetch": "^2.6.1"
   }
 }
