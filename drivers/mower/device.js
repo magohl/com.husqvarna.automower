@@ -4,13 +4,21 @@ const Homey = require('homey');
 const AutomowerApiUtil = require('/lib/automowerapiutil.js');
 const fetch = require('node-fetch');
 
+/* Date and Time stuff*/
+const dayjs = require('dayjs');;
+var calendar = require('dayjs/plugin/calendar');
+dayjs.extend(calendar);
+
 module.exports = class MowerDevice extends Homey.Device {
 
   async onInit() {
     this.log('MowerDevice has been initialized');
 
-    if (!this.util) this.util = new AutomowerApiUtil({homey: this.homey });
+    /* Add updated capabilities, since first version, if needed */
+    this.addCapabilityIfNeeded('mower_nextstart_capability');
 
+    if (!this.util) this.util = new AutomowerApiUtil({homey: this.homey });
+   
     this._timerId = null;
     this._pollingInterval = this.getSettings().polling_interval * 60000;
 
@@ -62,6 +70,13 @@ module.exports = class MowerDevice extends Homey.Device {
         this._timerId = null;
       }
       this.refreshCapabilities();
+    }
+  }
+
+  async addCapabilityIfNeeded(capability) {
+    if (!this.getCapabilities().includes(capability)) {
+      this.log('Capability ' + capability + ' not found, lets call addCapability.')
+      this.addCapability(capability);
     }
   }
 
@@ -191,6 +206,7 @@ module.exports = class MowerDevice extends Homey.Device {
         this.updateCapablity( "mower_state_capability", mowerData.data.attributes.mower.state );
         this.updateCapablity( "mower_errorcode_capability", mowerData.data.attributes.mower.errorCode.toString() );
         this.updateCapablity( "mower_battery_capability", mowerData.data.attributes.battery.batteryPercent );
+        this.updateCapablity( "mower_nextstart_capability", this.timeStampToNextStart(mowerData.data.attributes.planner.nextStartTimestamp) );
       }
       else {
           this.setWarning( "No data received", null );
@@ -217,4 +233,16 @@ module.exports = class MowerDevice extends Homey.Device {
     }
   }
 
+  timeStampToNextStart(timestamp) {
+    let nextStart = new Date(timestamp);
+    let nextStartText = dayjs(nextStart).calendar(null, {
+      sameDay: 'H:mm', // ( 9:35 )
+      nextDay: '[Tomorrow] H:mm', // ( Tomorrow 21:10 )
+      nextWeek: 'dddd H:mm', // ( Sunday 14:00 )
+      lastDay: '---', // N/A
+      lastWeek: '---', // N/A
+      sameElse: '---' // N/A
+    });
+    return nextStartText;
+  }
 }
