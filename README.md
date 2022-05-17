@@ -5,6 +5,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 ### Changelog
 * 1.0.0 - first version available for testing
 * 1.0.1 - updated flow card titles, app image, description, readme
+* 1.1.0 - Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start.
 
 ### Capabilities
 * Activity
