@@ -7,5 +7,8 @@
   },
   "1.1.0": {
     "en": "Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start."
+  },
+  "1.2.0": {
+    "en": "Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support."
   }
 }
