@@ -1,6 +1,6 @@
 {
   "id": "com.husqvarna.automower",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -765,6 +765,204 @@
           "title": {
             "en": "No power in charging station"
           }
+        },
+        {
+          "id": "91",
+          "title": {
+            "en": "Switch cord problem"
+          }
+        },
+        {
+          "id": "92",
+          "title": {
+            "en": "Work area not valid"
+          }
+        },
+        {
+          "id": "93",
+          "title": {
+            "en": "No accurate position from satellites"
+          }
+        },
+        {
+          "id": "94",
+          "title": {
+            "en": "Reference station communication problem"
+          }
+        },
+        {
+          "id": "95",
+          "title": {
+            "en": "Folding sensor activated"
+          }
+        },
+        {
+          "id": "96",
+          "title": {
+            "en": "Right brush motor overloaded"
+          }
+        },
+        {
+          "id": "97",
+          "title": {
+            "en": "Left brush motor overloaded"
+          }
+        },
+        {
+          "id": "98",
+          "title": {
+            "en": "Ultrasonic Sensor 1 defect"
+          }
+        },
+        {
+          "id": "99",
+          "title": {
+            "en": "Ultrasonic Sensor 2 defect"
+          }
+        },
+        {
+          "id": "100",
+          "title": {
+            "en": "Ultrasonic Sensor 3 defect"
+          }
+        },
+        {
+          "id": "101",
+          "title": {
+            "en": "Ultrasonic Sensor 4 defect"
+          }
+        },
+        {
+          "id": "102",
+          "title": {
+            "en": "Cutting drive motor 1 defect"
+          }
+        },
+        {
+          "id": "103",
+          "title": {
+            "en": "Cutting drive motor 2 defect"
+          }
+        },
+        {
+          "id": "104",
+          "title": {
+            "en": "Cutting drive motor 3 defect"
+          }
+        },
+        {
+          "id": "105",
+          "title": {
+            "en": "Lift Sensor defect"
+          }
+        },
+        {
+          "id": "106",
+          "title": {
+            "en": "Collision sensor defect"
+          }
+        },
+        {
+          "id": "107",
+          "title": {
+            "en": "Docking sensor defect"
+          }
+        },
+        {
+          "id": "108",
+          "title": {
+            "en": "Folding cutting deck sensor defect"
+          }
+        },
+        {
+          "id": "109",
+          "title": {
+            "en": "Loop sensor defect"
+          }
+        },
+        {
+          "id": "110",
+          "title": {
+            "en": "Collision sensor error"
+          }
+        },
+        {
+          "id": "111",
+          "title": {
+            "en": "No confirmed position"
+          }
+        },
+        {
+          "id": "112",
+          "title": {
+            "en": "Cutting system major imbalance"
+          }
+        },
+        {
+          "id": "113",
+          "title": {
+            "en": "Complex working area"
+          }
+        },
+        {
+          "id": "114",
+          "title": {
+            "en": "Too high discharge current"
+          }
+        },
+        {
+          "id": "115",
+          "title": {
+            "en": "Too high internal current"
+          }
+        },
+        {
+          "id": "116",
+          "title": {
+            "en": "High charging power loss"
+          }
+        },
+        {
+          "id": "117",
+          "title": {
+            "en": "High internal power loss"
+          }
+        },
+        {
+          "id": "118",
+          "title": {
+            "en": "Charging system problem"
+          }
+        },
+        {
+          "id": "119",
+          "title": {
+            "en": "Zone generator problem"
+          }
+        },
+        {
+          "id": "120",
+          "title": {
+            "en": "Internal voltage error"
+          }
+        },
+        {
+          "id": "121",
+          "title": {
+            "en": "High internal temerature"
+          }
+        },
+        {
+          "id": "122",
+          "title": {
+            "en": "CAN error"
+          }
+        },
+        {
+          "id": "123",
+          "title": {
+            "en": "Destination not reachable"
+          }
         }
       ]
     },
@@ -779,7 +977,7 @@
       "icon": "/drivers/mower/assets/battery.svg"
     },
     "mower_nextstart_capability": {
-      "type" : "string",
+      "type": "string",
       "title": {
         "en": "Next start"
       },

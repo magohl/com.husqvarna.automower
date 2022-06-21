@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {
-    "homey": "^2.8.0"
+    "homey": "^2.28.2"
   },
   "dependencies": {
-    "dayjs": "^1.10.4",
-    "node-fetch": "^2.6.1"
+    "dayjs": "^1.11.2",
+    "node-fetch": "^2.6.7"
   }
 }

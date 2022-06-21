@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "updated flow card titles, app image, description, readme"
+  },
+  "1.1.0": {
+    "en": "Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start."
   }
 }
