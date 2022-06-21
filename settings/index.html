@@ -24,6 +24,10 @@
         <label for="appkey">Appkey (Client ID)</label>
         <input id="appkey" type="text" value="" />
       </div>
+      <div class="field row">
+        <label for="appsecret">AppSecret</label>
+        <input id="appsecret" type="password" value="" />
+      </div>
     </fieldset>
 
     <button id="save" class="right">Save changes</button>
@@ -35,6 +39,7 @@
         var usernameElement = document.getElementById('username');
         var passwordElement = document.getElementById('password');
         var appkeyElement = document.getElementById('appkey');
+        var appsecretElement = document.getElementById('appsecret');
         var saveElement = document.getElementById('save');
 
         Homey.get('username', function (err, username) {
@@ -52,6 +57,11 @@
           appkeyElement.value = appkey;
         });
 
+        Homey.get('appsecret', function (err, appsecret) {
+          if (err) return Homey.alert(err);
+          appsecretElement.value = appsecret;
+        });
+
         saveElement.addEventListener('click', function (e) {
           Homey.set('username', usernameElement.value, function (err) {
             if (err) return Homey.alert(err);
@@ -60,6 +70,9 @@
             if (err) return Homey.alert(err);
           });
           Homey.set('appkey', appkeyElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+          Homey.set('appsecret', appsecretElement.value, function (err) {
             if (err) return Homey.alert(err);
           });
         });

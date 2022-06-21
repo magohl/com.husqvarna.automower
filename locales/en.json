@@ -1,6 +1,6 @@
 {
     "settings": {
       "title": "Automower Settings",
-      "subtitle": "Enter your Husqvarna API credentials"
+      "subtitle": "Enter your Husqvarna API credentials. Only Appkey/Appsecret is needed. Username/Password is for backwards compatibility."
     }
   }
