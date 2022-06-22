@@ -6,6 +6,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * 1.0.0 - first version available for testing
 * 1.0.1 - updated flow card titles, app image, description, readme
 * 1.1.0 - Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start.
+* 1.2.0 - Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support. (Thanks to TheodorStorm for his contribution!)
 
 ### Capabilities
 * Activity
@@ -13,6 +14,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Mode
 * Errorcode
 * Battery level
+* Next Start
 
 ### Triggers
 * Activity changed
@@ -46,7 +48,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Register for a (free) account on Husqvarna developer portal https://developer.husqvarnagroup.cloud/docs/getting-started#/docs/getting-started
 * Create an 'application' in the developer portal to get an appkey
 * Install app in Homey (SDK3)
-* Configure credentials in Homey App settings
+* Configure credentials in Homey App settings. Only appkey and appsecret needed. username/password only for backwards compatibitlity
 * Add device in Homey
 * Use triggers, conditions or actions in your Homey flows or check status in the device overview.
 
