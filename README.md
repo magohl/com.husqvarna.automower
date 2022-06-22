@@ -59,4 +59,5 @@ Note that the Husqvarna API currently has an rate limitation of 10,000 calls per
 ### Screenshots
 
 ![husqvarna_homey_1 2 0_screenshot](https://user-images.githubusercontent.com/1846780/174994104-60e635bf-7e16-46e9-b162-e317a6895256.jpeg)
+
 Example of the capabilities/details screen
