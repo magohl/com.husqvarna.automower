@@ -14,7 +14,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Mode
 * Errorcode
 * Battery level
-* Next Start
+* Next start
 
 ### Triggers
 * Activity changed
