@@ -43,12 +43,13 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Username
 * Password
 * Appkey
+* Appsecret
 
 ## Install and configure
 * Register for a (free) account on Husqvarna developer portal https://developer.husqvarnagroup.cloud/docs/getting-started#/docs/getting-started
 * Create an 'application' in the developer portal to get an appkey
 * Install app in Homey (SDK3)
-* Configure credentials in Homey App settings. Only appkey and appsecret needed. username/password only for backwards compatibitlity
+* Configure credentials in Homey App settings. Only appkey and appsecret needed. Username/password only for backwards compatibitlity
 * Add device in Homey
 * Use triggers, conditions or actions in your Homey flows or check status in the device overview.
 
@@ -57,5 +58,5 @@ Note that the Husqvarna API currently has an rate limitation of 10,000 calls per
 
 ### Screenshots
 
-![Screenshot_20201031-121838_Homey](https://user-images.githubusercontent.com/1846780/97784792-48ccd480-1ba1-11eb-927f-3e964a6fbb24.jpg)
-Example of the capabilities/details screen when mower power is off
+![husqvarna_homey_1 2 0_screenshot](https://user-images.githubusercontent.com/1846780/174994104-60e635bf-7e16-46e9-b162-e317a6895256.jpeg)
+Example of the capabilities/details screen
