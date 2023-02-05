@@ -1,7 +1,7 @@
 'use strict';
 
 const Homey = require('homey');
-const AutomowerApiUtil = require('/lib/automowerapiutil.js');
+const AutomowerApiUtil = require('../../lib/automowerapiutil.js');
 const fetch = require('node-fetch');
 
 /* Date and Time stuff*/

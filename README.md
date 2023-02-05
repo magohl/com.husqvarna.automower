@@ -7,6 +7,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * 1.0.1 - updated flow card titles, app image, description, readme
 * 1.1.0 - Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start.
 * 1.2.0 - Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support. (Thanks to TheodorStorm for his contribution!)
+* 1.2.1 - Minor bugfix to support Homey Pro Early 2023 model
 
 ### Capabilities
 * Activity
