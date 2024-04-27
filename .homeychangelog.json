@@ -10,5 +10,11 @@
   },
   "1.2.0": {
     "en": "Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support."
+  },
+  "1.2.1": {
+    "en": "Minor bugfix to support Homey Pro Early 2023 model"
+  },
+  "1.3.0": {
+    "en": "Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Added new error codes from Husqvarna. Added capability 'Inactive reason' which Husqvarna have added to the mower status. Added trigger 'Inactive Reason changed'. Added action 'Poll' that will force a status update independent of any automatic polling."
   }
 }
