@@ -22,14 +22,21 @@ module.exports = class MowerDriver extends Homey.Driver {
   async initFlows() {
     this.log('MowerDevice initalize flows');
 
-    /* Action 'pause' */
+    /* Action 'Poll' */
+    this.homey.flow.getActionCard('poll')
+      .registerRunListener(async (args, state) => {
+        this.log('MowerDevice FlowAction poll triggered');
+        await args.Automower.refreshMowerCapabilities();
+    });
+
+    /* Action 'Pause' */
     this.homey.flow.getActionCard('pause')
       .registerRunListener(async (args, state) => {
         this.log('MowerDevice FlowAction pause triggered');
         let id = args.Automower.getData().id;
         let data = {
           data: {
-            type: 'ParkUntilFurtherNotice'
+            type: 'Pause'
           }
         };
       let actionResult = await this.util.sendMowerAction(id, data);
@@ -125,7 +132,6 @@ module.exports = class MowerDriver extends Homey.Driver {
     this.homey.flow.getConditionCard('state_is')
       .registerRunListener(async (args, state) => {
         this.log('MowerDevice Flow-condition state_is triggered');
-        console.log(args);
         return (args.state === args.Automower.getCapabilityValue('mower_state_capability'));
       });
   }

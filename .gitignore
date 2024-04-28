@@ -1,5 +1,9 @@
 env.json
 node_modules/
 
+## Do not include .env and .http test files
+.env
+.http/
+
 # Added by Homey CLI
 /.homeybuild/
