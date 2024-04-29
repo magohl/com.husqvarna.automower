@@ -36,10 +36,10 @@
       function onHomeyReady(Homey) {
         Homey.ready();
 
-        var usernameElement = document.getElementById('username').trim();
-        var passwordElement = document.getElementById('password').trim();
-        var appkeyElement = document.getElementById('appkey').trim();
-        var appsecretElement = document.getElementById('appsecret').trim();
+        var usernameElement = document.getElementById('username');
+        var passwordElement = document.getElementById('password');
+        var appkeyElement = document.getElementById('appkey');
+        var appsecretElement = document.getElementById('appsecret');
         var saveElement = document.getElementById('save');
 
         Homey.get('username', function (err, username) {
@@ -63,16 +63,16 @@
         });
 
         saveElement.addEventListener('click', function (e) {
-          Homey.set('username', usernameElement.value, function (err) {
+          Homey.set('username', usernameElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('password', passwordElement.value, function (err) {
+          Homey.set('password', passwordElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('appkey', appkeyElement.value, function (err) {
+          Homey.set('appkey', appkeyElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('appsecret', appsecretElement.value, function (err) {
+          Homey.set('appsecret', appsecretElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
         });
