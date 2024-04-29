@@ -8,7 +8,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * 1.1.0 - Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start.
 * 1.2.0 - Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support. (Thanks to TheodorStorm for his contribution!)
 * 1.2.1 - Minor bugfix to support Homey Pro Early 2023 model
-* 1.3.2 - Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Removed unnecessary API login at drvier init which cause errors (bugfix). Added new error codes from Husqvarna. Added capability 'Inactive reason' which Husqvarna have added to the mower status. Added trigger 'Inactive Reason changed'. Added action 'Poll' that will force a status update independent of any automatic polling.
+* 1.3.3 - Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Removed unnecessary API login which could cause errors during setup (bugfix). Added new error codes from Husqvarna. Added whitespace removal in App configuration credentials dialogue. Added capability 'Inactive reason' recently added by Husqvarna to the mower status. Added trigger 'Inactive Reason changed'. Added action 'Poll' that will update status independent of the built-in interval-based polling, which allow control of polling from a flow.
 
 ### Capabilities
 * Activity
