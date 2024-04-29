@@ -8,7 +8,6 @@ module.exports = class MowerDriver extends Homey.Driver {
   async onInit() {
     if (!this.util) {
       this.util = new AutomowerApiUtil({homey: this.homey });
-      await this.util.login(true);
       await this.initFlows();
     }
     this.log('MowerDriver has been initialized');

@@ -2,6 +2,7 @@
 
 const Homey = require('homey');
 const AutomowerApiUtil = require('../../lib/automowerapiutil.js');
+const ErrorCodes = require('./errorcodes.js');
 const fetch = require('node-fetch');
 
 /* Date and Time stuff */
@@ -99,7 +100,9 @@ module.exports = class MowerDevice extends Homey.Device {
         this.updateCapablity( "mower_mode_capability", mowerData.data.attributes.mower.mode );
         this.updateCapablity( "mower_activity_capability", mowerData.data.attributes.mower.activity );
         this.updateCapablity( "mower_state_capability", mowerData.data.attributes.mower.state );
-        this.updateCapablity( "mower_errorcode_capability", mowerData.data.attributes.mower.errorCode );
+        this.updateCapablity( "mower_errorcode_capability", mowerData.data.attributes.mower.errorCode.toString(), {
+          'value': mowerData.data.attributes.mower.errorCode,
+          'description': ErrorCodes.getErrorDescriptionById(mowerData.data.attributes.mower.errorCode)});
         this.updateCapablity( "mower_battery_capability", mowerData.data.attributes.battery.batteryPercent );
         this.updateCapablity( "mower_nextstart_capability", this.timeStampToNextStart(mowerData.data.attributes.planner.nextStartTimestamp) );
         this.updateCapablity( "mower_inactivereason_capability", mowerData.data.attributes.mower.inactiveReason );
@@ -113,19 +116,15 @@ module.exports = class MowerDevice extends Homey.Device {
         this.log(err.stack);
         this.setWarning( "error getting mower status", null );
     }
-
   }
 
-  async updateCapablity(capability, value) {
-
+  async updateCapablity(capability, value, triggerValue = {'value': value}) {
     let currentValue = this.getCapabilityValue(capability);
-    /* Need string value or convert only if necessary */
-    let newValue = (typeof currentValue === 'string' && typeof value !== 'string') ? value.toString() : value;
-    this.setCapabilityValue( capability, newValue );
+    this.setCapabilityValue( capability, value);
 
     if (currentValue != value) {
       this.homey.flow.getDeviceTriggerCard(`${capability}_changed`)
-        .trigger( this, {'value': value}, {})
+        .trigger( this, triggerValue, {})
         .catch(this.error);
     }
   }

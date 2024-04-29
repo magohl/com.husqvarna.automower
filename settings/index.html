@@ -63,16 +63,16 @@
         });
 
         saveElement.addEventListener('click', function (e) {
-          Homey.set('username', usernameElement.value, function (err) {
+          Homey.set('username', usernameElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('password', passwordElement.value, function (err) {
+          Homey.set('password', passwordElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('appkey', appkeyElement.value, function (err) {
+          Homey.set('appkey', appkeyElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
-          Homey.set('appsecret', appsecretElement.value, function (err) {
+          Homey.set('appsecret', appsecretElement.value.trim(), function (err) {
             if (err) return Homey.alert(err);
           });
         });
