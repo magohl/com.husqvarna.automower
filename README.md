@@ -8,7 +8,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * 1.1.0 - Added new error codes from Husqvarna. Added 'Next start' capability that displays the scheduled next start.
 * 1.2.0 - Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support. (Thanks to TheodorStorm for his contribution!)
 * 1.2.1 - Minor bugfix to support Homey Pro Early 2023 model
-* 1.3.4 - Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Removed unnecessary API login which could cause errors during setup (bugfix). Added new error codes from Husqvarna. Added whitespace removal in App configuration credentials dialogue. Added capability 'Inactive reason' recently added by Husqvarna to the mower status. Added trigger 'Inactive Reason changed'. Added flow token for error-code description. Added action 'Poll' that will update status independent of the built-in interval-based polling, which allow control of polling from a flow.
+* 1.3.5 - Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Removed unnecessary API login which could cause errors during setup (bugfix). Added new error codes from Husqvarna. Added whitespace removal in App configuration credentials dialogue. Added capability 'Inactive reason' recently added by Husqvarna to the mower status. Added trigger 'Inactive Reason changed'. Added flow token for error-code description. Added action 'Poll' that will update status independent of the built-in interval-based polling, which allow control of polling from a flow. Added trigger 'Last position changed' including tokens with latitude and longitude of last known position. Added 4 new condition flow cards for comparing current position latitude and longitude with a value.
 
 ### Capabilities
 * Activity
@@ -26,10 +26,15 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Errorcode changed
 * Battery level changed
 * Inactive Reason changed
+* Last position changed
 
 ### Conditons
 * Activity is
 * State is
+* Last postition latitude is greater than 
+* Last postition latitude is less than 
+* Last postition longitude is greater than 
+* Last postition longitude is less than 
 
 ### Actions
 * Pause
@@ -45,8 +50,8 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Polling interval
 
 ### App settings
-* Username
-* Password
+* Username (legacy)
+* Password (legacy)
 * Appkey
 * Appsecret
 
@@ -59,7 +64,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Use triggers, conditions or actions in your Homey flows or check status in the device overview.
 
 ### Rate limitations
-Note that the Husqvarna API currently has an rate limitation of 10,000 calls per month and account. By default this homey app poll the Husqvarna Automower Connect API every 10 minutes. You can change this in app settings. Note - if your main usage is flow actions to control the mower, you do not need polling and it can be disabled. Since 1.3.0 you can also trigger a poll manually using the 'Poll' action.
+Note that the Husqvarna API currently has an rate limitation of 10,000 calls per month and account. By default this homey app poll the Husqvarna Automower Connect API every 10 minutes. You can change this in app settings. Note - if your main usage is flow actions to control the mower, you do not need polling and it can be disabled. Since 1.3.x you can also trigger a poll manually using the 'Poll' action.
 
 ### Screenshots
 

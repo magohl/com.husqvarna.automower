@@ -1,6 +1,6 @@
 {
   "id": "com.husqvarna.automower",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -1236,6 +1236,15 @@
       "getable": true,
       "setable": false,
       "icon": "/drivers/mower/assets/clock.svg"
+    },
+    "mower_lastposition_capability": {
+      "type": "string",
+      "title": {
+        "en": "Last position"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null
     }
   },
   "flow": {
@@ -1399,6 +1408,37 @@
               "en": "Inactive Reason"
             },
             "example": "NONE"
+          }
+        ],
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          }
+        ]
+      },
+      {
+        "id": "mower_lastposition_capability_changed",
+        "title": {
+          "en": "Last position changed"
+        },
+        "tokens": [
+          {
+            "name": "latitude",
+            "type": "number",
+            "title": {
+              "en": "Latitude"
+            },
+            "example": 56.3104275
+          },
+          {
+            "name": "longitude",
+            "type": "number",
+            "title": {
+              "en": "Longitude"
+            },
+            "example": 13.8465345
           }
         ],
         "args": [
@@ -1574,6 +1614,86 @@
             ]
           }
         ]
+      },
+      {
+        "id": "latitude_greater_than",
+        "title": {
+          "en": "Last position latitude is greater than"
+        },
+        "titleFormatted": {
+          "en": "Last position latitude is greater than [[latitude]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "latitude_less_than",
+        "title": {
+          "en": "Last position latitude is less than"
+        },
+        "titleFormatted": {
+          "en": "Last position latitude is less than [[latitude]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "longitude_greater_than",
+        "title": {
+          "en": "Last position longitude is greater than"
+        },
+        "titleFormatted": {
+          "en": "Last position longitude is greater than [[longitude]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "longitude",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "longitude_less_than",
+        "title": {
+          "en": "Last position longitude is less than"
+        },
+        "titleFormatted": {
+          "en": "Last position longitude is less than [[longitude]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "longitude",
+            "type": "number"
+          }
+        ]
       }
     ],
     "actions": [
@@ -1583,7 +1703,7 @@
           "en": "Poll and update status"
         },
         "hint": {
-          "en": "This will call the API separate from the configured polling interval."
+          "en": "This will refresh mower status separate from configured polling interval."
         },
         "args": [
           {
@@ -1716,7 +1836,8 @@
         "mower_inactivereason_capability",
         "mower_errorcode_capability",
         "mower_battery_capability",
-        "mower_nextstart_capability"
+        "mower_nextstart_capability",
+        "mower_lastposition_capability"
       ],
       "images": {
         "large": "/drivers/mower/assets/images/large.png",
