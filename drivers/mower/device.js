@@ -18,6 +18,7 @@ module.exports = class MowerDevice extends Homey.Device {
     /* Add updated capabilities, since first version, if needed */
     this.addCapabilityIfNeeded('mower_nextstart_capability');
     this.addCapabilityIfNeeded('mower_inactivereason_capability');
+    this.addCapabilityIfNeeded('mower_lastposition_capability');
 
     if (!this.util) this.util = new AutomowerApiUtil({homey: this.homey });
    
@@ -106,6 +107,10 @@ module.exports = class MowerDevice extends Homey.Device {
         this.updateCapablity( "mower_battery_capability", mowerData.data.attributes.battery.batteryPercent );
         this.updateCapablity( "mower_nextstart_capability", this.timeStampToNextStart(mowerData.data.attributes.planner.nextStartTimestamp) );
         this.updateCapablity( "mower_inactivereason_capability", mowerData.data.attributes.mower.inactiveReason );
+        this.updateCapablity( "mower_lastposition_capability", `${mowerData.data.attributes.positions[0].latitude},${mowerData.data.attributes.positions[0].longitude}`, {
+          'latitude': mowerData.data.attributes.positions[0].latitude,
+          'longitude': mowerData.data.attributes.positions[0].longitude
+        });
       }
       else {
           this.setWarning( "No data received", null );

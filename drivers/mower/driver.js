@@ -133,5 +133,42 @@ module.exports = class MowerDriver extends Homey.Driver {
         this.log('MowerDevice Flow-condition state_is triggered');
         return (args.state === args.Automower.getCapabilityValue('mower_state_capability'));
       });
+
+    /* Condition 'latitude_greater_than' */
+    this.homey.flow.getConditionCard('latitude_greater_than')
+      .registerRunListener(async (args, state) => {
+        let latitude = args.Automower.getCapabilityValue('mower_lastposition_capability').split(',')[0];
+        let conditionResult = latitude > args.latitude;
+        this.log(`MowerDevice Flow-condition latitude_greater_than triggered - condition result ${conditionResult}`);
+        return (conditionResult);
+      });
+
+    /* Condition 'latitude_less_than' */
+    this.homey.flow.getConditionCard('latitude_less_than')
+      .registerRunListener(async (args, state) => {
+        let latitude = args.Automower.getCapabilityValue('mower_lastposition_capability').split(',')[0];
+        let conditionResult = latitude < args.latitude;
+        this.log(`MowerDevice Flow-condition latitude_less_than triggered - condition result ${conditionResult}`);
+        return (args.latitude < latitude);
+      });
+
+    /* Condition 'longitude_greater_than' */
+    this.homey.flow.getConditionCard('longitude_greater_than')
+      .registerRunListener(async (args, state) => {
+        let longitude = args.Automower.getCapabilityValue('mower_lastposition_capability').split(',')[1];
+        let conditionResult = longitude > args.longitude;
+        this.log(`MowerDevice Flow-condition longitude_greater_than triggered - condition result ${conditionResult}`);
+        return (longitude > args.longitude);
+      });
+
+    /* Condition 'longitude_less_than' */
+    this.homey.flow.getConditionCard('longitude_less_than')
+      .registerRunListener(async (args, state) => {
+        let longitude = args.Automower.getCapabilityValue('mower_lastposition_capability').split(',')[1];
+        let conditionResult = longitude < args.longitude;
+        this.log(`MowerDevice Flow-condition longitude_less_than triggered - condition result ${conditionResult}`);
+        return (longitude < args.longitude);
+      });
+
   }
 }
