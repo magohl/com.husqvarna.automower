@@ -124,13 +124,22 @@ module.exports = class MowerDevice extends Homey.Device {
   }
 
   async updateCapablity(capability, value, triggerValue = {'value': value}) {
-    let currentValue = this.getCapabilityValue(capability);
-    this.setCapabilityValue( capability, value);
+    let currentValue = await this.getCapabilityValue(capability);
+    await this.setCapabilityValue( capability, value);
+
+    /* Temporary to help the switch from enum to string in mower_errorcode_capability
+       This will skip the unnecessary trigger when current erroCode (old version)
+       is '0' (enum) and now gets set to '---'
+       Can be removed in future versions
+    */
+    if (capability === 'mower_errorcode_capability' && currentValue === '0' && value === '---') {
+      currentValue = await this.getCapabilityValue(capability);
+    }
 
     if (currentValue != value) {
-      this.homey.flow.getDeviceTriggerCard(`${capability}_changed`)
-        .trigger( this, triggerValue, {})
-        .catch(this.error);
+        this.homey.flow.getDeviceTriggerCard(`${capability}_changed`)
+          .trigger( this, triggerValue, {})
+          .catch(this.error);
     }
   }
 
