@@ -1,6 +1,6 @@
 {
   "id": "com.husqvarna.automower",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -744,7 +744,9 @@
           {
             "name": "polygons",
             "type": "text",
-            "placeholder": { "en": "A list of polygons in GeoJSON format. Eg. from https://geojson.io/" }
+            "placeholder": {
+              "en": "A list of polygons in GeoJSON format. Eg. from https://geojson.io/"
+            }
           }
         ]
       }

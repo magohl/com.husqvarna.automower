@@ -19,5 +19,8 @@
   },
   "1.4.0": {
     "en": "Feature Added: Geopositioning Condition Flow Card: 'Last Position is Inside Any Polygon'. A new geopositioning condition flow card has been introduced, enabling conditional checks against an array of polygons. This feature allows flows to determine if the mower is located within specific areas of your garden. Polygons should be created as GeoJSON structures and passed as an argument to the condition. Changes: Errorcode capability now support unknown errorcodes which is useful when Husqvarna add new ones. Bugfix: Improved functionality adding missing capabilities."
+  },
+  "1.4.1": {
+    "en": "Feature Added: Geopositioning Condition Flow Card: 'Last Position is Inside Any Polygon'. A new geopositioning condition flow card has been introduced, enabling conditional checks against an array of polygons. This feature allows flows to determine if the mower is located within specific areas of your garden. Polygons should be created as GeoJSON structures and passed as an argument to the condition. Changes: Errorcode capability now support unknown errorcodes which is useful when Husqvarna add new ones. Bugfix: Improved functionality adding missing capabilities."
   }
 }
