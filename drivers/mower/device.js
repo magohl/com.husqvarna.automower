@@ -16,9 +16,9 @@ module.exports = class MowerDevice extends Homey.Device {
     this.log('MowerDevice has been initialized');
 
     /* Add updated capabilities, since first version, if needed */
-    this.addCapabilityIfNeeded('mower_nextstart_capability');
-    this.addCapabilityIfNeeded('mower_inactivereason_capability');
-    this.addCapabilityIfNeeded('mower_lastposition_capability');
+    await this.addCapabilityIfNeeded('mower_nextstart_capability');
+    await this.addCapabilityIfNeeded('mower_inactivereason_capability');
+    await this.addCapabilityIfNeeded('mower_lastposition_capability');
 
     if (!this.util) this.util = new AutomowerApiUtil({homey: this.homey });
    
@@ -67,7 +67,7 @@ module.exports = class MowerDevice extends Homey.Device {
 
     /* Reactivate polling based on current settings */
     if ((intervalChanged && newPolling) || (pollingChanged && newPolling)) {
-      this.refreshCapabilitiesFromInterval();
+      await this.refreshCapabilitiesFromInterval();
     }
 
   }
@@ -75,15 +75,15 @@ module.exports = class MowerDevice extends Homey.Device {
   async addCapabilityIfNeeded(capability) {
     if (!this.getCapabilities().includes(capability)) {
       this.log('Capability ' + capability + ' not found, lets call addCapability.')
-      this.addCapability(capability);
+      await this.addCapability(capability);
     }
   }
 
   async refreshCapabilitiesFromInterval() {
     await this.refreshMowerCapabilities()
-    this._timerId = setTimeout( () =>
+    this._timerId = setTimeout( async () =>
     {
-        this.refreshCapabilitiesFromInterval();
+        await this.refreshCapabilitiesFromInterval();
     }, this._pollingInterval );
   }
 
@@ -98,16 +98,16 @@ module.exports = class MowerDevice extends Homey.Device {
 
       if ( mowerData ) {
         this.setAvailable();
-        this.updateCapablity( "mower_mode_capability", mowerData.data.attributes.mower.mode );
-        this.updateCapablity( "mower_activity_capability", mowerData.data.attributes.mower.activity );
-        this.updateCapablity( "mower_state_capability", mowerData.data.attributes.mower.state );
-        this.updateCapablity( "mower_errorcode_capability", mowerData.data.attributes.mower.errorCode.toString(), {
+        await this.updateCapablity( "mower_mode_capability", mowerData.data.attributes.mower.mode );
+        await this.updateCapablity( "mower_activity_capability", mowerData.data.attributes.mower.activity );
+        await this.updateCapablity( "mower_state_capability", mowerData.data.attributes.mower.state );
+        await this.updateCapablity( "mower_errorcode_capability", ErrorCodes.getErrorDescriptionById(mowerData.data.attributes.mower.errorCode), {
           'value': mowerData.data.attributes.mower.errorCode,
           'description': ErrorCodes.getErrorDescriptionById(mowerData.data.attributes.mower.errorCode)});
-        this.updateCapablity( "mower_battery_capability", mowerData.data.attributes.battery.batteryPercent );
-        this.updateCapablity( "mower_nextstart_capability", this.timeStampToNextStart(mowerData.data.attributes.planner.nextStartTimestamp) );
-        this.updateCapablity( "mower_inactivereason_capability", mowerData.data.attributes.mower.inactiveReason );
-        this.updateCapablity( "mower_lastposition_capability", `${mowerData.data.attributes.positions[0].latitude},${mowerData.data.attributes.positions[0].longitude}`, {
+        await this.updateCapablity( "mower_battery_capability", mowerData.data.attributes.battery.batteryPercent );
+        await this.updateCapablity( "mower_nextstart_capability", this.timeStampToNextStart(mowerData.data.attributes.planner.nextStartTimestamp) );
+        await this.updateCapablity( "mower_inactivereason_capability", mowerData.data.attributes.mower.inactiveReason );
+        await this.updateCapablity( "mower_lastposition_capability", `${mowerData.data.attributes.positions[0].latitude},${mowerData.data.attributes.positions[0].longitude}`, {
           'latitude': mowerData.data.attributes.positions[0].latitude,
           'longitude': mowerData.data.attributes.positions[0].longitude
         });
