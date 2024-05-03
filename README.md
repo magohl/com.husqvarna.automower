@@ -36,6 +36,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Last postition latitude is less than 
 * Last postition longitude is greater than 
 * Last postition longitude is less than 
+* Last Position is Inside Any Polygon
 
 ### Actions
 * Pause
