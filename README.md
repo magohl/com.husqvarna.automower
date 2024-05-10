@@ -9,6 +9,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * 1.2.0 - Added support for Husqvarna Auth API changes. Added auth token caching. New improved multiple mower support. (Thanks to TheodorStorm for his contribution!)
 * 1.2.1 - Minor bugfix to support Homey Pro Early 2023 model
 * 1.3.5 - Action 'Pause' now send the correct command to the mower (bugfix). Trigger 'ErrorCode changed' now handled correctly which fixes side effects on other triggers also (bugfix). Fixed minor issue changing the polling settings (bugfix). Removed unnecessary API login which could cause errors during setup (bugfix). Added new error codes from Husqvarna. Added whitespace removal in App configuration credentials dialogue. Added capability 'Inactive reason' recently added by Husqvarna to the mower status. Added trigger 'Inactive Reason changed'. Added flow token for error-code description. Added action 'Poll' that will update status independent of the built-in interval-based polling, which allow control of polling from a flow. Added trigger 'Last position changed' including tokens with latitude and longitude of last known position. Added 4 new condition flow cards for comparing current position latitude and longitude with a value.
+* 1.4.2 - Feature Added: Geopositioning Condition Flow Card: 'Last Position is Inside Any Polygon'. A new geopositioning condition flow card has been introduced, enabling conditional checks against an array of polygons. This feature allows flows to determine if the mower is located within specific areas of your garden. Polygons should be created as GeoJSON structures and passed as an argument to the condition. Changes: Errorcode capability now support unknown errorcodes needed when Husqvarna add new ones between releases. Bugfixes: Improved handling when adding missing capabilities.
 
 ### Capabilities
 * Activity
@@ -35,6 +36,7 @@ Athom Homey smart-home app to control the Husqvarna Automowers equipped with Aut
 * Last postition latitude is less than 
 * Last postition longitude is greater than 
 * Last postition longitude is less than 
+* Last Position is Inside Any Polygon
 
 ### Actions
 * Pause

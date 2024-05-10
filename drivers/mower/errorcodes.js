@@ -1,985 +1,181 @@
 module.exports = {
 
-    getErrorDescriptionById: function(id) {
-        id = Number(id);
+    getErrorDescriptionById: function(errorCode) {
+        errorCode = Number(errorCode);
 
-        const entry = errorCodes.values.find(item => item.id === id);
+        const entry = errorCodes.values.find(item => item.errorCode === errorCode);
         if (entry) {
-            return entry.title.en;
+            return entry.description;
         }
 
-        return "Unknown errorcode";
+        // Unknown code - lets return the ID at least
+        return errorCode.toString();
     }
 }
 
 /* Currently this is repeated in 'mower_errorcode_capability' as changnig that from enum to string gives an error. And recreating the capability breaks flows */
 let errorCodes = {
     "values": [
-        {
-            "id": 0,
-            "title": {
-                "en": "---"
-            }
-        },
-        {
-            "id": 1,
-            "title": {
-                "en": "Outside working area"
-            }
-        },
-        {
-            "id": 2,
-            "title": {
-                "en": "No loop signal"
-            }
-        },
-        {
-            "id": 3,
-            "title": {
-                "en": "Wrong loop signal"
-            }
-        },
-        {
-            "id": 4,
-            "title": {
-                "en": "Loop sensor problem, front"
-            }
-        },
-        {
-            "id": 5,
-            "title": {
-                "en": "Loop sensor problem, rear"
-            }
-        },
-        {
-            "id": 6,
-            "title": {
-                "en": "Loop sensor problem, left"
-            }
-        },
-        {
-            "id": 7,
-            "title": {
-                "en": "Loop sensor problem, right"
-            }
-        },
-        {
-            "id": 8,
-            "title": {
-                "en": "Wrong PIN code"
-            }
-        },
-        {
-            "id": 9,
-            "title": {
-                "en": "Trapped"
-            }
-        },
-        {
-            "id": 10,
-            "title": {
-                "en": "Upside down"
-            }
-        },
-        {
-            "id": 11,
-            "title": {
-                "en": "Low battery"
-            }
-        },
-        {
-            "id": 12,
-            "title": {
-                "en": "Empty battery"
-            }
-        },
-        {
-            "id": 13,
-            "title": {
-                "en": "No drive"
-            }
-        },
-        {
-            "id": 14,
-            "title": {
-                "en": "Mower lifted"
-            }
-        },
-        {
-            "id": 15,
-            "title": {
-                "en": "Lifted"
-            }
-        },
-        {
-            "id": 16,
-            "title": {
-                "en": "Stuck in charging station"
-            }
-        },
-        {
-            "id": 17,
-            "title": {
-                "en": "Charging station blocked"
-            }
-        },
-        {
-            "id": 18,
-            "title": {
-                "en": "Collision sensor problem, rear"
-            }
-        },
-        {
-            "id": 19,
-            "title": {
-                "en": "Collision sensor problem, front"
-            }
-        },
-        {
-            "id": 20,
-            "title": {
-                "en": "Wheel motor blocked, right"
-            }
-        },
-        {
-            "id": 21,
-            "title": {
-                "en": "Wheel motor blocked, left"
-            }
-        },
-        {
-            "id": 22,
-            "title": {
-                "en": "Wheel drive problem, right"
-            }
-        },
-        {
-            "id": 23,
-            "title": {
-                "en": "Wheel drive problem, left"
-            }
-        },
-        {
-            "id": 24,
-            "title": {
-                "en": "Cutting system blocked"
-            }
-        },
-        {
-            "id": 25,
-            "title": {
-                "en": "Cutting system blocked"
-            }
-        },
-        {
-            "id": 26,
-            "title": {
-                "en": "Invalid sub-device combination"
-            }
-        },
-        {
-            "id": 27,
-            "title": {
-                "en": "Settings restored"
-            }
-        },
-        {
-            "id": 28,
-            "title": {
-                "en": "Memory circuit problem"
-            }
-        },
-        {
-            "id": 29,
-            "title": {
-                "en": "Slope too steep"
-            }
-        },
-        {
-            "id": 30,
-            "title": {
-                "en": "Charging system problem"
-            }
-        },
-        {
-            "id": 31,
-            "title": {
-                "en": "STOP button problem"
-            }
-        },
-        {
-            "id": 32,
-            "title": {
-                "en": "Tilt sensor problem"
-            }
-        },
-        {
-            "id": 33,
-            "title": {
-                "en": "Mower tilted"
-            }
-        },
-        {
-            "id": 34,
-            "title": {
-                "en": "Cutting stopped - slope too steep"
-            }
-        },
-        {
-            "id": 35,
-            "title": {
-                "en": "Wheel motor overloaded, right"
-            }
-        },
-        {
-            "id": 36,
-            "title": {
-                "en": "Wheel motor overloaded, left"
-            }
-        },
-        {
-            "id": 37,
-            "title": {
-                "en": "Charging current too high"
-            }
-        },
-        {
-            "id": 38,
-            "title": {
-                "en": "Electronic problem"
-            }
-        },
-        {
-            "id": 39,
-            "title": {
-                "en": "Cutting motor problem"
-            }
-        },
-        {
-            "id": 40,
-            "title": {
-                "en": "Limited cutting height range"
-            }
-        },
-        {
-            "id": 41,
-            "title": {
-                "en": "Unexpected cutting height adj"
-            }
-        },
-        {
-            "id": 42,
-            "title": {
-                "en": "Limited cutting height range"
-            }
-        },
-        {
-            "id": 43,
-            "title": {
-                "en": "Cutting height problem, drive"
-            }
-        },
-        {
-            "id": 44,
-            "title": {
-                "en": "Cutting height problem, curr"
-            }
-        },
-        {
-            "id": 45,
-            "title": {
-                "en": "Cutting height problem, dir"
-            }
-        },
-        {
-            "id": 46,
-            "title": {
-                "en": "Cutting height blocked"
-            }
-        },
-        {
-            "id": 47,
-            "title": {
-                "en": "Cutting height problem"
-            }
-        },
-        {
-            "id": 48,
-            "title": {
-                "en": "No response from charger"
-            }
-        },
-        {
-            "id": 49,
-            "title": {
-                "en": "Ultrasonic problem"
-            }
-        },
-        {
-            "id": 50,
-            "title": {
-                "en": "Guide 1 not found"
-            }
-        },
-        {
-            "id": 51,
-            "title": {
-                "en": "Guide 2 not found"
-            }
-        },
-        {
-            "id": 52,
-            "title": {
-                "en": "Guide 3 not found"
-            }
-        },
-        {
-            "id": 53,
-            "title": {
-                "en": "GPS navigation problem"
-            }
-        },
-        {
-            "id": 54,
-            "title": {
-                "en": "Weak GPS signal"
-            }
-        },
-        {
-            "id": 55,
-            "title": {
-                "en": "Difficult finding home"
-            }
-        },
-        {
-            "id": 56,
-            "title": {
-                "en": "Guide calibration accomplished"
-            }
-        },
-        {
-            "id": 57,
-            "title": {
-                "en": "Guide calibration failed"
-            }
-        },
-        {
-            "id": 58,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 59,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 60,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 61,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 62,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 63,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 64,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 65,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 66,
-            "title": {
-                "en": "Battery problem"
-            }
-        },
-        {
-            "id": 67,
-            "title": {
-                "en": "Battery problem"
-            }
-        },
-        {
-            "id": 68,
-            "title": {
-                "en": "Temporary battery problem"
-            }
-        },
-        {
-            "id": 69,
-            "title": {
-                "en": "Alarm! Mower switched off"
-            }
-        },
-        {
-            "id": 70,
-            "title": {
-                "en": "Alarm! Mower stopped"
-            }
-        },
-        {
-            "id": 71,
-            "title": {
-                "en": "Alarm! Mower lifted"
-            }
-        },
-        {
-            "id": 72,
-            "title": {
-                "en": "Alarm! Mower tilted"
-            }
-        },
-        {
-            "id": 73,
-            "title": {
-                "en": "Alarm! Mower in motion"
-            }
-        },
-        {
-            "id": 74,
-            "title": {
-                "en": "Alarm! Outside geofence"
-            }
-        },
-        {
-            "id": 75,
-            "title": {
-                "en": "Connection changed"
-            }
-        },
-        {
-            "id": 76,
-            "title": {
-                "en": "Connection NOT changed"
-            }
-        },
-        {
-            "id": 77,
-            "title": {
-                "en": "Com board not available"
-            }
-        },
-        {
-            "id": 78,
-            "title": {
-                "en": "Slipped - Mower has Slipped.Situation not solved with moving pattern"
-            }
-        },
-        {
-            "id": 79,
-            "title": {
-                "en": "Invalid battery combination - Invalid combination of different battery types."
-            }
-        },
-        {
-            "id": 80,
-            "title": {
-                "en": "Cutting system imbalance    Warning"
-            }
-        },
-        {
-            "id": 81,
-            "title": {
-                "en": "Safety function faulty"
-            }
-        },
-        {
-            "id": 82,
-            "title": {
-                "en": "Wheel motor blocked, rear right"
-            }
-        },
-        {
-            "id": 83,
-            "title": {
-                "en": "Wheel motor blocked, rear left"
-            }
-        },
-        {
-            "id": 84,
-            "title": {
-                "en": "Wheel drive problem, rear right"
-            }
-        },
-        {
-            "id": 85,
-            "title": {
-                "en": "Wheel drive problem, rear left"
-            }
-        },
-        {
-            "id": 86,
-            "title": {
-                "en": "Wheel motor overloaded, rear right"
-            }
-        },
-        {
-            "id": 87,
-            "title": {
-                "en": "Wheel motor overloaded, rear left"
-            }
-        },
-        {
-            "id": 88,
-            "title": {
-                "en": "Angular sensor problem"
-            }
-        },
-        {
-            "id": 89,
-            "title": {
-                "en": "Invalid system configuration"
-            }
-        },
-        {
-            "id": 90,
-            "title": {
-                "en": "No power in charging station"
-            }
-        },
-        {
-            "id": 91,
-            "title": {
-                "en": "Switch cord problem"
-            }
-        },
-        {
-            "id": 92,
-            "title": {
-                "en": "Work area not valid"
-            }
-        },
-        {
-            "id": 93,
-            "title": {
-                "en": "No accurate position from satellites"
-            }
-        },
-        {
-            "id": 94,
-            "title": {
-                "en": "Reference station communication problem"
-            }
-        },
-        {
-            "id": 95,
-            "title": {
-                "en": "Folding sensor activated"
-            }
-        },
-        {
-            "id": 96,
-            "title": {
-                "en": "Right brush motor overloaded"
-            }
-        },
-        {
-            "id": 97,
-            "title": {
-                "en": "Left brush motor overloaded"
-            }
-        },
-        {
-            "id": 98,
-            "title": {
-                "en": "Ultrasonic Sensor 1 defect"
-            }
-        },
-        {
-            "id": 99,
-            "title": {
-                "en": "Ultrasonic Sensor 2 defect"
-            }
-        },
-        {
-            "id": 100,
-            "title": {
-                "en": "Ultrasonic Sensor 3 defect"
-            }
-        },
-        {
-            "id": 101,
-            "title": {
-                "en": "Ultrasonic Sensor 4 defect"
-            }
-        },
-        {
-            "id": 102,
-            "title": {
-                "en": "Cutting drive motor 1 defect"
-            }
-        },
-        {
-            "id": 103,
-            "title": {
-                "en": "Cutting drive motor 2 defect"
-            }
-        },
-        {
-            "id": 104,
-            "title": {
-                "en": "Cutting drive motor 3 defect"
-            }
-        },
-        {
-            "id": 105,
-            "title": {
-                "en": "Lift Sensor defect"
-            }
-        },
-        {
-            "id": 106,
-            "title": {
-                "en": "Collision sensor defect"
-            }
-        },
-        {
-            "id": 107,
-            "title": {
-                "en": "Docking sensor defect"
-            }
-        },
-        {
-            "id": 108,
-            "title": {
-                "en": "Folding cutting deck sensor defect"
-            }
-        },
-        {
-            "id": 109,
-            "title": {
-                "en": "Loop sensor defect"
-            }
-        },
-        {
-            "id": 110,
-            "title": {
-                "en": "Collision sensor error"
-            }
-        },
-        {
-            "id": 111,
-            "title": {
-                "en": "No confirmed position"
-            }
-        },
-        {
-            "id": 112,
-            "title": {
-                "en": "Cutting system major imbalance"
-            }
-        },
-        {
-            "id": 113,
-            "title": {
-                "en": "Complex working area"
-            }
-        },
-        {
-            "id": 114,
-            "title": {
-                "en": "Too high discharge current"
-            }
-        },
-        {
-            "id": 115,
-            "title": {
-                "en": "Too high internal current"
-            }
-        },
-        {
-            "id": 116,
-            "title": {
-                "en": "High charging power loss"
-            }
-        },
-        {
-            "id": 117,
-            "title": {
-                "en": "High internal power loss"
-            }
-        },
-        {
-            "id": 118,
-            "title": {
-                "en": "Charging system problem"
-            }
-        },
-        {
-            "id": 119,
-            "title": {
-                "en": "Zone generator problem"
-            }
-        },
-        {
-            "id": 120,
-            "title": {
-                "en": "Internal voltage error"
-            }
-        },
-        {
-            "id": 121,
-            "title": {
-                "en": "High internal temerature"
-            }
-        },
-        {
-            "id": 122,
-            "title": {
-                "en": "CAN error"
-            }
-        },
-        {
-            "id": 123,
-            "title": {
-                "en": "Destination not reachable"
-            }
-        },
-        {
-            "id": 124,
-            "title": {
-                "en": "Destination blocked"
-            }
-        },
-        {
-            "id": 125,
-            "title": {
-                "en": "Battery needs replacement"
-            }
-        },
-        {
-            "id": 126,
-            "title": {
-                "en": "Battery near end of life"
-            }
-        },
-        {
-            "id": 127,
-            "title": {
-                "en": "Battery problem"
-            }
-        },
-        {
-            "id": 128,
-            "title": {
-                "en": "Multiple reference stations detected"
-            }
-        },
-        {
-            "id": 129,
-            "title": {
-                "en": "Auxiliary cutting means blocked"
-            }
-        },
-        {
-            "id": 130,
-            "title": {
-                "en": "Imbalanced auxiliary cutting disc detected"
-            }
-        },
-        {
-            "id": 131,
-            "title": {
-                "en": "Lifted in link arm"
-            }
-        },
-        {
-            "id": 132,
-            "title": {
-                "en": "EPOS accessory missing"
-            }
-        },
-        {
-            "id": 133,
-            "title": {
-                "en": "Bluetooth com with CS failed"
-            }
-        },
-        {
-            "id": 134,
-            "title": {
-                "en": "Invalid SW configuration"
-            }
-        },
-        {
-            "id": 135,
-            "title": {
-                "en": "Radar problem"
-            }
-        },
-        {
-            "id": 136,
-            "title": {
-                "en": "Work area tampered"
-            }
-        },
-        {
-            "id": 137,
-            "title": {
-                "en": "High temperature in cutting motor, right"
-            }
-        },
-        {
-            "id": 138,
-            "title": {
-                "en": "High temperature in cutting motor, center"
-            }
-        },
-        {
-            "id": 139,
-            "title": {
-                "en": "High temperature in cutting motor, left"
-            }
-        },
-        {
-            "id": 141,
-            "title": {
-                "en": "Wheel brush motor problem"
-            }
-        },
-        {
-            "id": 143,
-            "title": {
-                "en": "Accessory power problem"
-            }
-        },
-        {
-            "id": 144,
-            "title": {
-                "en": "Boundary wire problem"
-            }
-        },
-        {
-            "id": 701,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 702,
-            "title": {
-                "en": "Connectivity settings restored"
-            }
-        },
-        {
-            "id": 703,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 704,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 705,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 706,
-            "title": {
-                "en": "Poor signal quality"
-            }
-        },
-        {
-            "id": 707,
-            "title": {
-                "en": "SIM card requires PIN"
-            }
-        },
-        {
-            "id": 708,
-            "title": {
-                "en": "SIM card locked"
-            }
-        },
-        {
-            "id": 709,
-            "title": {
-                "en": "SIM card not found"
-            }
-        },
-        {
-            "id": 710,
-            "title": {
-                "en": "SIM card locked"
-            }
-        },
-        {
-            "id": 711,
-            "title": {
-                "en": "SIM card locked"
-            }
-        },
-        {
-            "id": 712,
-            "title": {
-                "en": "SIM card locked"
-            }
-        },
-        {
-            "id": 713,
-            "title": {
-                "en": "Geofence problem"
-            }
-        },
-        {
-            "id": 714,
-            "title": {
-                "en": "Geofence problem"
-            }
-        },
-        {
-            "id": 715,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 716,
-            "title": {
-                "en": "Connectivity problem"
-            }
-        },
-        {
-            "id": 717,
-            "title": {
-                "en": "SMS could not be sent"
-            }
-        },
-        {
-            "id": 724,
-            "title": {
-                "en": "Communication circuit board SW must be updated"
-            }
-        }
+        {"errorCode": 0, "description": "---"},
+        {"errorCode": 1, "description": "Outside working area"},
+        {"errorCode": 2, "description": "No loop signal"},
+        {"errorCode": 3, "description": "Wrong loop signal"},
+        {"errorCode": 4, "description": "Loop sensor problem, front"},
+        {"errorCode": 5, "description": "Loop sensor problem, rear"},
+        {"errorCode": 6, "description": "Loop sensor problem, left"},
+        {"errorCode": 7, "description": "Loop sensor problem, right"},
+        {"errorCode": 8, "description": "Wrong PIN code"},
+        {"errorCode": 9, "description": "Trapped"},
+        {"errorCode": 10, "description": "Upside down"},
+        {"errorCode": 11, "description": "Low battery"},
+        {"errorCode": 12, "description": "Empty battery"},
+        {"errorCode": 13, "description": "No drive"},
+        {"errorCode": 14, "description": "Mower lifted"},
+        {"errorCode": 15, "description": "Lifted"},
+        {"errorCode": 16, "description": "Stuck in charging station"},
+        {"errorCode": 17, "description": "Charging station blocked"},
+        {"errorCode": 18, "description": "Collision sensor problem, rear"},
+        {"errorCode": 19, "description": "Collision sensor problem, front"},
+        {"errorCode": 20, "description": "Wheel motor blocked, right"},
+        {"errorCode": 21, "description": "Wheel motor blocked, left"},
+        {"errorCode": 22, "description": "Wheel drive problem, right"},
+        {"errorCode": 23, "description": "Wheel drive problem, left"},
+        {"errorCode": 24, "description": "Cutting system blocked"},
+        {"errorCode": 25, "description": "Cutting system blocked"},
+        {"errorCode": 26, "description": "Invalid sub-device combination"},
+        {"errorCode": 27, "description": "Settings restored"},
+        {"errorCode": 28, "description": "Memory circuit problem"},
+        {"errorCode": 29, "description": "Slope too steep"},
+        {"errorCode": 30, "description": "Charging system problem"},
+        {"errorCode": 31, "description": "STOP button problem"},
+        {"errorCode": 32, "description": "Tilt sensor problem"},
+        {"errorCode": 33, "description": "Mower tilted"},
+        {"errorCode": 34, "description": "Cutting stopped - slope too steep"},
+        {"errorCode": 35, "description": "Wheel motor overloaded, right"},
+        {"errorCode": 36, "description": "Wheel motor overloaded, left"},
+        {"errorCode": 37, "description": "Charging current too high"},
+        {"errorCode": 38, "description": "Electronic problem"},
+        {"errorCode": 39, "description": "Cutting motor problem"},
+        {"errorCode": 40, "description": "Limited cutting height range"},
+        {"errorCode": 41, "description": "Unexpected cutting height adj"},
+        {"errorCode": 42, "description": "Limited cutting height range"},
+        {"errorCode": 43, "description": "Cutting height problem, drive"},
+        {"errorCode": 44, "description": "Cutting height problem, curr"},
+        {"errorCode": 45, "description": "Cutting height problem, dir"},
+        {"errorCode": 46, "description": "Cutting height blocked"},
+        {"errorCode": 47, "description": "Cutting height problem"},
+        {"errorCode": 48, "description": "No response from charger"},
+        {"errorCode": 49, "description": "Ultrasonic problem"},
+        {"errorCode": 50, "description": "Guide 1 not found"},
+        {"errorCode": 51, "description": "Guide 2 not found"},
+        {"errorCode": 52, "description": "Guide 3 not found"},
+        {"errorCode": 53, "description": "GPS navigation problem"},
+        {"errorCode": 54, "description": "Weak GPS signal"},
+        {"errorCode": 55, "description": "Difficult finding home"},
+        {"errorCode": 56, "description": "Guide calibration accomplished"},
+        {"errorCode": 57, "description": "Guide calibration failed"},
+        {"errorCode": 58, "description": "Temporary battery problem"},
+        {"errorCode": 59, "description": "Temporary battery problem"},
+        {"errorCode": 60, "description": "Temporary battery problem"},
+        {"errorCode": 61, "description": "Temporary battery problem"},
+        {"errorCode": 62, "description": "Temporary battery problem"},
+        {"errorCode": 63, "description": "Temporary battery problem"},
+        {"errorCode": 64, "description": "Temporary battery problem"},
+        {"errorCode": 65, "description": "Temporary battery problem"},
+        {"errorCode": 66, "description": "Battery problem"},
+        {"errorCode": 67, "description": "Battery problem"},
+        {"errorCode": 68, "description": "Temporary battery problem"},
+        {"errorCode": 69, "description": "Alarm! Mower switched off"},
+        {"errorCode": 70, "description": "Alarm! Mower stopped"},
+        {"errorCode": 71, "description": "Alarm! Mower lifted"},
+        {"errorCode": 72, "description": "Alarm! Mower tilted"},
+        {"errorCode": 73, "description": "Alarm! Mower in motion"},
+        {"errorCode": 74, "description": "Alarm! Outside geofence"},
+        {"errorCode": 75, "description": "Connection changed"},
+        {"errorCode": 76, "description": "Connection NOT changed"},
+        {"errorCode": 77, "description": "Com board not available"},
+        {"errorCode": 78, "description": "Slipped - Mower has Slipped.Situation not solved with moving pattern"},
+        {"errorCode": 79, "description": "Invalid battery combination - Invalid combination of different battery types."},
+        {"errorCode": 80, "description": "Cutting system imbalance    Warning"},
+        {"errorCode": 81, "description": "Safety function faulty"},
+        {"errorCode": 82, "description": "Wheel motor blocked, rear right"},
+        {"errorCode": 83, "description": "Wheel motor blocked, rear left"},
+        {"errorCode": 84, "description": "Wheel drive problem, rear right"},
+        {"errorCode": 85, "description": "Wheel drive problem, rear left"},
+        {"errorCode": 86, "description": "Wheel motor overloaded, rear right"},
+        {"errorCode": 87, "description": "Wheel motor overloaded, rear left"},
+        {"errorCode": 88, "description": "Angular sensor problem"},
+        {"errorCode": 89, "description": "Invalid system configuration"},
+        {"errorCode": 90, "description": "No power in charging station"},
+        {"errorCode": 91, "description": "Switch cord problem"},
+        {"errorCode": 92, "description": "Work area not valid"},
+        {"errorCode": 93, "description": "No accurate position from satellites"},
+        {"errorCode": 94, "description": "Reference station communication problem"},
+        {"errorCode": 95, "description": "Folding sensor activated"},
+        {"errorCode": 96, "description": "Right brush motor overloaded"},
+        {"errorCode": 97, "description": "Left brush motor overloaded"},
+        {"errorCode": 98, "description": "Ultrasonic Sensor 1 defect"},
+        {"errorCode": 99, "description": "Ultrasonic Sensor 2 defect"},
+        {"errorCode": 100, "description": "Ultrasonic Sensor 3 defect"},
+        {"errorCode": 101, "description": "Ultrasonic Sensor 4 defect"},
+        {"errorCode": 102, "description": "Cutting drive motor 1 defect"},
+        {"errorCode": 103, "description": "Cutting drive motor 2 defect"},
+        {"errorCode": 104, "description": "Cutting drive motor 3 defect"},
+        {"errorCode": 105, "description": "Lift Sensor defect"},
+        {"errorCode": 106, "description": "Collision sensor defect"},
+        {"errorCode": 107, "description": "Docking sensor defect"},
+        {"errorCode": 108, "description": "Folding cutting deck sensor defect"},
+        {"errorCode": 109, "description": "Loop sensor defect"},
+        {"errorCode": 110, "description": "Collision sensor error"},
+        {"errorCode": 111, "description": "No confirmed position"},
+        {"errorCode": 112, "description": "Cutting system major imbalance"},
+        {"errorCode": 113, "description": "Complex working area"},
+        {"errorCode": 114, "description": "Too high discharge current"},
+        {"errorCode": 115, "description": "Too high internal current"},
+        {"errorCode": 116, "description": "High charging power loss"},
+        {"errorCode": 117, "description": "High internal power loss"},
+        {"errorCode": 118, "description": "Charging system problem"},
+        {"errorCode": 119, "description": "Zone generator problem"},
+        {"errorCode": 120, "description": "Internal voltage error"},
+        {"errorCode": 121, "description": "High internal temerature"},
+        {"errorCode": 122, "description": "CAN error"},
+        {"errorCode": 123, "description": "Destination not reachable"},
+        {"errorCode": 124, "description": "Destination blocked"},
+        {"errorCode": 125, "description": "Battery needs replacement"},
+        {"errorCode": 126, "description": "Battery near end of life"},
+        {"errorCode": 127, "description": "Battery problem"},
+        {"errorCode": 128, "description": "Multiple reference stations detected"},
+        {"errorCode": 129, "description": "Auxiliary cutting means blocked"},
+        {"errorCode": 130, "description": "Imbalanced auxiliary cutting disc detected"},
+        {"errorCode": 131, "description": "Lifted in link arm"},
+        {"errorCode": 132, "description": "EPOS accessory missing"},
+        {"errorCode": 133, "description": "Bluetooth com with CS failed"},
+        {"errorCode": 134, "description": "Invalid SW configuration"},
+        {"errorCode": 135, "description": "Radar problem"},
+        {"errorCode": 136, "description": "Work area tampered"},
+        {"errorCode": 137, "description": "High temperature in cutting motor, right"},
+        {"errorCode": 138, "description": "High temperature in cutting motor, center"},
+        {"errorCode": 139, "description": "High temperature in cutting motor, left"},
+        {"errorCode": 141, "description": "Wheel brush motor problem"},
+        {"errorCode": 143, "description": "Accessory power problem"},
+        {"errorCode": 144, "description": "Boundary wire problem"},
+        {"errorCode": 701, "description": "Connectivity problem"},
+        {"errorCode": 702, "description": "Connectivity settings restored"},
+        {"errorCode": 703, "description": "Connectivity problem"},
+        {"errorCode": 704, "description": "Connectivity problem"},
+        {"errorCode": 705, "description": "Connectivity problem"},
+        {"errorCode": 706, "description": "Poor signal quality"},
+        {"errorCode": 707, "description": "SIM card requires PIN"},
+        {"errorCode": 708, "description": "SIM card locked"},
+        {"errorCode": 709, "description": "SIM card not found"},
+        {"errorCode": 710, "description": "SIM card locked"},
+        {"errorCode": 711, "description": "SIM card locked"},
+        {"errorCode": 712, "description": "SIM card locked"},
+        {"errorCode": 713, "description": "Geofence problem"},
+        {"errorCode": 714, "description": "Geofence problem"},
+        {"errorCode": 715, "description": "Connectivity problem"},
+        {"errorCode": 716, "description": "Connectivity problem"},
+        {"errorCode": 717, "description": "SMS could not be sent"},
+        {"errorCode": 724, "description": "Communication circuit board SW must be updated"}
     ]
 };

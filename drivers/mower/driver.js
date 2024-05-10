@@ -2,6 +2,7 @@
 
 const Homey = require('homey');
 const AutomowerApiUtil = require('../../lib/automowerapiutil.js');
+const PositionUtil = require('../../lib/positionutil.js');
 
 module.exports = class MowerDriver extends Homey.Driver {
 
@@ -170,5 +171,17 @@ module.exports = class MowerDriver extends Homey.Driver {
         return (longitude < args.longitude);
       });
 
+    /* Condition 'lastposition_is_inside_any_polygon' */
+    this.homey.flow.getConditionCard('lastposition_is_inside_any_polygon')
+      .registerRunListener(async (args, state) => {
+        /* Turf and GeoJSON uses the format lon,lat while the capability follow the canonical format lat,lon */
+        let lastPositionCapability = args.Automower.getCapabilityValue('mower_lastposition_capability');
+        let latitude = lastPositionCapability.split(',')[0];
+        let longitude = lastPositionCapability.split(',')[1];
+        let conditionResult = PositionUtil.checkPointInPolygons([longitude, latitude], args.polygons);
+
+        this.log(`MowerDevice Flow-condition lastposition_is_inside_any_polygon tested with result ${conditionResult}`);
+        return (conditionResult);
+      });
   }
 }
