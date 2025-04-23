@@ -1,6 +1,6 @@
 {
   "id": "com.husqvarna.automower",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -641,6 +641,58 @@
                 "id": "ERROR_AT_POWER_UP",
                 "title": {
                   "en": "Error power up"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mode_is",
+        "title": {
+          "en": "Mode is"
+        },
+        "titleFormatted": {
+          "en": "Mode is [[mode]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "MAIN_AREA",
+                "title": {
+                  "en": "Main area"
+                }
+              },
+              {
+                "id": "SECONDARY_AREA",
+                "title": {
+                  "en": "Seconday area"
+                }
+              },
+              {
+                "id": "HOME",
+                "title": {
+                  "en": "Home"
+                }
+              },
+              {
+                "id": "DEMO",
+                "title": {
+                  "en": "Demo"
+                }
+              },
+              {
+                "id": "UNKNOWN",
+                "title": {
+                  "en": "Unknown"
                 }
               }
             ]

@@ -135,6 +135,14 @@ module.exports = class MowerDriver extends Homey.Driver {
         return (args.state === args.Automower.getCapabilityValue('mower_state_capability'));
       });
 
+    /* Condition 'mode_is' */
+    this.homey.flow.getConditionCard('mode_is')
+      .registerRunListener(async (args, mode) => {
+        this.log('MowerDevice Flow-condition mode_is triggered');
+        return (args.mode === args.Automower.getCapabilityValue('mower_mode_capability'));
+      });
+
+
     /* Condition 'latitude_greater_than' */
     this.homey.flow.getConditionCard('latitude_greater_than')
       .registerRunListener(async (args, state) => {
