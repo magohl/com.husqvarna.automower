@@ -103,7 +103,7 @@
         {
           "id": "SECONDARY_AREA",
           "title": {
-            "en": "Seconday area"
+            "en": "Secondary area"
           }
         },
         {
@@ -277,6 +277,15 @@
       "getable": true,
       "setable": false,
       "uiComponent": null
+    },
+    "mower_current_zone": {
+      "type": "string",
+      "title": {
+        "en": "Current Zone"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/drivers/mower/assets/area.svg"
     }
   },
   "flow": {
@@ -480,6 +489,29 @@
             "filter": "driver_id=mower"
           }
         ]
+      },
+      {
+        "id": "mower_current_zone_changed",
+        "title": {
+          "en": "Zone changed"
+        },
+        "tokens": [
+          {
+            "name": "value",
+            "type": "string",
+            "title": {
+              "en": "Zone"
+            },
+            "example": "Green"
+          }
+        ],
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          }
+        ]
       }
     ],
     "conditions": [
@@ -674,7 +706,7 @@
               {
                 "id": "SECONDARY_AREA",
                 "title": {
-                  "en": "Seconday area"
+                  "en": "Secondary area"
                 }
               },
               {
@@ -696,6 +728,29 @@
                 }
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "current_zone_is",
+        "title": {
+          "en": "Current zone is"
+        },
+        "titleFormatted": {
+          "en": "Current zone is [[zone]]"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "zone",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Select zone..."
+            }
           }
         ]
       },
@@ -926,6 +981,67 @@
             }
           }
         ]
+      },
+      {
+        "id": "start_in_zone",
+        "title": {
+          "en": "Start mowing in zone"
+        },
+        "titleFormatted": {
+          "en": "Start mowing in zone [[zone]] for [[hours]] hours"
+        },
+        "hint": {
+          "en": "Start mower in specific work area for a set duration"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "zone",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Select zone..."
+            }
+          },
+          {
+            "name": "hours",
+            "type": "number",
+            "placeholder": {
+              "en": "Duration (hours)"
+            },
+            "min": 1,
+            "max": 24
+          }
+        ]
+      },
+      {
+        "id": "start_in_zone_complete",
+        "title": {
+          "en": "Start mowing zone until complete"
+        },
+        "titleFormatted": {
+          "en": "Start mowing in zone [[zone]] until complete"
+        },
+        "hint": {
+          "en": "Start mower in specific work area and let it finish the zone completely"
+        },
+        "args": [
+          {
+            "name": "Automower",
+            "type": "device",
+            "filter": "driver_id=mower"
+          },
+          {
+            "name": "zone",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Select zone..."
+            }
+          }
+        ]
       }
     ]
   },
@@ -944,7 +1060,8 @@
         "mower_errorcode_capability",
         "mower_battery_capability",
         "mower_nextstart_capability",
-        "mower_lastposition_capability"
+        "mower_lastposition_capability",
+        "mower_current_zone"
       ],
       "images": {
         "large": "/drivers/mower/assets/images/large.png",

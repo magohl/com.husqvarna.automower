@@ -19,6 +19,141 @@ module.exports = class MowerDriver extends Homey.Driver {
     return mowers;
   }
 
+  // Autocomplete-funktion för zoner
+  async onZoneAutocomplete(query, args) {
+    try {
+      this.log('onZoneAutocomplete called with query:', query);
+      this.log('Autocomplete args:', args);
+      
+      // I Homey SDK v3 kan device vara i args.device eller args.Automower
+      let device = args.device || args.Automower;
+      
+      if (!device) {
+        this.log('No device found in autocomplete args, trying to get from driver');
+        // Fallback: hämta alla enheter från driver
+        const devices = this.getDevices();
+        if (devices.length > 0) {
+          device = devices[0]; // Använd första enheten som fallback
+          this.log('Using first device as fallback:', device.getName());
+        }
+      }
+      
+      if (!device) {
+        this.log('Still no device found, cannot get work areas');
+        return [];
+      }
+
+      this.log('Getting work areas from device:', device.getName());
+      const workAreas = await device.getWorkAreas();
+      this.log('Work areas received:', workAreas);
+      
+      if (!workAreas || workAreas.length === 0) {
+        this.log('No work areas found, trying direct API call...');
+        // Fallback: använd driver's util direkt
+        const mowerId = device.getData().id;
+        const directResult = await this.util.getMowerWorkAreas(mowerId);
+        this.log('Direct API result:', directResult);
+        
+        if (directResult && directResult.length > 0) {
+          return directResult
+            .filter(area => area.name.toLowerCase().includes(query.toLowerCase()))
+            .map(area => ({
+              name: area.name,
+              id: area.id.toString()
+            }));
+        }
+        
+        return [];
+      }
+      
+      const filteredAreas = workAreas
+        .filter(area => area.name.toLowerCase().includes(query.toLowerCase()))
+        .map(area => ({
+          name: area.name,
+          id: area.id.toString()
+        }));
+        
+      this.log('Filtered areas for autocomplete:', filteredAreas);
+      return filteredAreas;
+      
+    } catch (error) {
+      this.log('Error getting work areas for autocomplete:', error);
+      this.log('Error stack:', error.stack);
+      
+      // Sista fallback: använd driver's util direkt med första enheten
+      try {
+        const devices = this.getDevices();
+        if (devices.length > 0) {
+          const mowerId = devices[0].getData().id;
+          const fallbackResult = await this.util.getMowerWorkAreas(mowerId);
+          this.log('Fallback result:', fallbackResult);
+          
+          if (fallbackResult && fallbackResult.length > 0) {
+            return fallbackResult
+              .filter(area => area.name.toLowerCase().includes(query.toLowerCase()))
+              .map(area => ({
+                name: area.name,
+                id: area.id.toString()
+              }));
+          }
+        }
+      } catch (fallbackError) {
+        this.log('Fallback also failed:', fallbackError);
+      }
+      
+      return [];
+    }
+  }
+
+  // Condition: Kontrollera om aktuell zon är specifik zon
+  async onCurrentZoneIs(args) {
+    try {
+      const device = args.Automower; // I Homey flows heter enheten 'Automower'
+      const targetZone = args.zone;
+      const currentZone = device.getCapabilityValue('mower_current_zone');
+      
+      return currentZone === targetZone.name;
+    } catch (error) {
+      this.log('Error checking current zone:', error);
+      return false;
+    }
+  }
+
+  // Action: Starta klippning i specifik zon med tidsgräns
+  async onStartInZone(args) {
+    try {
+      const device = args.Automower; // I Homey flows heter enheten 'Automower'
+      const zone = args.zone;
+      const hours = args.hours;
+      
+      // Anropa Husqvarna API för att starta i specifik zon
+      const result = await device.startInWorkArea(zone.id, hours);
+      
+      this.log(`Started mowing in zone ${zone.name} for ${hours} hours`);
+      return result;
+    } catch (error) {
+      this.log('Error starting mower in zone:', error);
+      throw new Error(`Failed to start mowing in zone: ${error.message}`);
+    }
+  }
+
+  // Action: Starta klippning i specifik zon tills den är klar
+  async onStartInZoneComplete(args) {
+    try {
+      const device = args.Automower; // I Homey flows heter enheten 'Automower'
+      const zone = args.zone;
+      
+      // Anropa Husqvarna API för att starta i specifik zon utan tidsgräns
+      const result = await device.startInWorkAreaComplete(zone.id);
+      
+      this.log(`Started mowing in zone ${zone.name} until complete`);
+      return result;
+    } catch (error) {
+      this.log('Error starting mower in zone:', error);
+      throw new Error(`Failed to start mowing in zone: ${error.message}`);
+    }
+  }
+
   async initFlows() {
     this.log('MowerDevice initalize flows');
 
@@ -121,6 +256,16 @@ module.exports = class MowerDriver extends Homey.Driver {
       return actionResult;
     });
 
+    /* Action 'Start in Zone' */
+    this.homey.flow.getActionCard('start_in_zone')
+      .registerRunListener(this.onStartInZone.bind(this))
+      .registerArgumentAutocompleteListener('zone', this.onZoneAutocomplete.bind(this));
+
+    /* Action 'Start in Zone Complete' - NY FUNKTION */
+    this.homey.flow.getActionCard('start_in_zone_complete')
+      .registerRunListener(this.onStartInZoneComplete.bind(this))
+      .registerArgumentAutocompleteListener('zone', this.onZoneAutocomplete.bind(this));
+
     /* Condition 'activity_is' */
     this.homey.flow.getConditionCard('activity_is')
       .registerRunListener(async (args, state) => {
@@ -142,6 +287,10 @@ module.exports = class MowerDriver extends Homey.Driver {
         return (args.mode === args.Automower.getCapabilityValue('mower_mode_capability'));
       });
 
+    /* Condition 'current_zone_is' - NY FUNKTION */
+    this.homey.flow.getConditionCard('current_zone_is')
+      .registerRunListener(this.onCurrentZoneIs.bind(this))
+      .registerArgumentAutocompleteListener('zone', this.onZoneAutocomplete.bind(this));
 
     /* Condition 'latitude_greater_than' */
     this.homey.flow.getConditionCard('latitude_greater_than')
